@@ -2,6 +2,7 @@ import { useState } from "react"
 import type { JSX } from "react"
 import Header from "./Header"
 import users from "./users.ts"
+import personImg from "../../assets/Person.png"
 
 interface User {
     name: string,
@@ -34,9 +35,6 @@ export default function Main() {
         setOldChats(oldChatsTemp)
     }
 
-    console.log("New Chats: " + newChats)
-    console.log("Old Chats: " + oldChats)
-
     // Provides text if there are or are not chats
     function newChatsBlock(): JSX.Element {
         if (newChats.length <= 0) {
@@ -45,9 +43,18 @@ export default function Main() {
             return <ul>{
 
                 newChats.map(chat => {
+                    const imgUrl: string = chat.avatarUrl 
+                        ? chat.avatarUrl
+                        : personImg
+
                     return (<li key={chat.id}>
+
                         <span>{chat.name}</span>
                         <p>{chat.message}</p>
+                        <figure>
+                            <img src={imgUrl} alt="Profile Photo" />
+                        </figure>
+
                     </li>)
                 })}
 
@@ -60,18 +67,18 @@ export default function Main() {
         if (oldChats.length > 0) {
             return (
                 <>
-                    <div>Oldest</div>
+                <div>Oldest</div>
 
-                    <section>
-                        <ul>
-                            {oldChats.map(chat => {
-                                return (<li key={chat.id}>
-                                    <span>{chat.name}</span>
-                                    <p>{chat.message}</p>
-                                </li>)
-                            })}
-                        </ul>
-                    </section>
+                <section>
+                    <ul>
+                        {oldChats.map(chat => {
+                            return (<li key={chat.id}>
+                                <span>{chat.name}</span>
+                                <p>{chat.message}</p>
+                            </li>)
+                        })}
+                    </ul>
+                </section>
                 </>
             )
         } else return null

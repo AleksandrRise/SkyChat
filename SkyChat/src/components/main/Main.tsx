@@ -11,16 +11,17 @@ interface User {
 
 export default function Main() {
 
-    const [chats, setChats] = useState<Array<User>>([])
+    const [newChats, setNewChats] = useState<Array<User>>([])
+    const [oldChats, setOldChats] = useState<Array<User>>([])
 
     // Provides text if there are or are not chats
-    function chatsBlock(): JSX.Element {
-        if (chats.length <= 0) {
+    function newChatsBlock(): JSX.Element {
+        if (newChats.length <= 0) {
             return <h2>You have no chats! Consider adding someone ;)</h2>
         } else {
             return <ul>{
 
-                chats.map(chat => {
+                newChats.map(chat => {
                     return (<li>
                         <span>{chat.name}</span>
                         <p>{chat.message}</p>
@@ -31,18 +32,39 @@ export default function Main() {
         }
     }
 
+    // Provides oldest chats from the oldChats array
+    function oldChatsBlock(): JSX.Element | null {
+        if (oldChatsBlock.length > 0) {
+            return (
+                <>
+                    <div>Oldest</div>
+
+                    <section>
+                        <ul>
+                            {oldChats.map(chat => {
+                                return (<li>
+                                    <span>chat.name</span>
+                                    <p>{chat.message}</p>
+                                </li>)
+                            })}
+                        </ul>
+                    </section>
+                </>
+            )
+        } else return null
+    }
+
     return (
         <main>
 
             <Header />
 
             <section>
-                {chatsBlock()}
+                {newChatsBlock()}
             </section>
 
-            <section>
+            {oldChatsBlock()}
 
-            </section>
         </main>
     )
 }

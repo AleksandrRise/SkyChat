@@ -1,6 +1,7 @@
 import { useState } from "react"
-import Header from "./Header"
 import type { JSX } from "react"
+import Header from "./Header"
+import users from "./users.ts"
 
 interface User {
     name: string,
@@ -13,6 +14,12 @@ export default function Main() {
 
     const [newChats, setNewChats] = useState<Array<User>>([])
     const [oldChats, setOldChats] = useState<Array<User>>([])
+
+    if (users.length > 0) {
+        if (users.length > 3) {
+            
+        }
+    }
 
     // Provides text if there are or are not chats
     function newChatsBlock(): JSX.Element {

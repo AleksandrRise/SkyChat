@@ -5,10 +5,12 @@ import type { JSX } from "react"
 interface User {
     name: string,
     message: string,
-    avatarUrl?: string
+    avatarUrl?: string,
+    whenTexted: string
 }
 
 export default function Main() {
+
     const [chats, setChats] = useState<Array<User>>([])
 
     // Provides text if there are or are not chats
@@ -24,7 +26,7 @@ export default function Main() {
                         <p>{chat.message}</p>
                     </li>)
                 })}
-                
+
             </ul>
         }
     }

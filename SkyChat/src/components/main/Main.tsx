@@ -11,7 +11,7 @@ interface User {
 export default function Main() {
     const [chats, setChats] = useState<Array<User>>([])
 
-    // Provides text on an empty and non-empty array
+    // Provides text if there are or are not chats
     function chatsBlock(): JSX.Element {
         if (chats.length <= 0) {
             return <h2>You have no chats! Consider adding someone ;)</h2>

@@ -1,6 +1,7 @@
+// Returns a component with an Add User Button and Messages title
 export default function Header() {
-    return (<header>
-        <button id="header__addUser"></button>
-        <h1 id="header__title">Messages</h1>
-    </header>)
+    return <header>
+        <button></button> 
+        <h1>Messages</h1>
+    </header>
 }

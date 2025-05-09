@@ -43,6 +43,7 @@ export default function Main() {
             return <ul>{
 
                 newChats.map(chat => {
+                    // Chooses either a default or custom profile photo
                     const imgUrl: string = chat.avatarUrl 
                         ? chat.avatarUrl
                         : personImg

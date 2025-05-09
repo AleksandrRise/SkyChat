@@ -6,7 +6,7 @@ interface User {
     name: string,
     message: string,
     avatarUrl?: string,
-    whenTexted: string
+    whenTexted: number
 }
 
 export default function Main() {

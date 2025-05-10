@@ -86,7 +86,7 @@ export default function Main() {
     }
 
     return (
-        <main>
+        <main className="">
 
             <Header />
 

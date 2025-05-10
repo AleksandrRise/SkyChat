@@ -2,7 +2,7 @@ import { useState } from "react"
 import type { JSX } from "react"
 import Header from "./Header"
 import users from "./users.ts"
-import defaultPhoto from "../../assets/Person.png"
+import defaultPhoto from "../../assets/images/Person.png"
 
 interface User {
     name: string,
@@ -68,7 +68,7 @@ export default function Main() {
         if (oldChats.length > 0) {
             return (
                 <>
-                <div>Oldest</div>
+                <div className="font-primary">Oldest</div>
 
                 <section>
                     <ul>
@@ -86,7 +86,7 @@ export default function Main() {
     }
 
     return (
-        <main className="">
+        <main className="font-secondary font-normal">
 
             <Header />
 

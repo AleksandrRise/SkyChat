@@ -55,6 +55,7 @@ export default function Main() {
                         <figure>
                             <img src={imgUrl} alt="Profile Photo" />
                         </figure>
+                        <span>{chat.whenTexted} min</span>
 
                     </li>)
                 })}
@@ -73,10 +74,21 @@ export default function Main() {
                 <section>
                     <ul>
                         {oldChats.map(chat => {
+
+                            // Chooses either a default or custom profile photo
+                            const imgUrl: string = chat.avatarUrl 
+                            ? chat.avatarUrl
+                            : defaultPhoto
+
                             return (<li key={chat.id}>
                                 <span>{chat.name}</span>
                                 <p>{chat.message}</p>
+                                <figure>
+                                    <img src={imgUrl} alt="Profile Photo" />
+                                </figure>
+                                <span>{chat.whenTexted} min</span>
                             </li>)
+
                         })}
                     </ul>
                 </section>

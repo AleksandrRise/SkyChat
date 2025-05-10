@@ -2,7 +2,7 @@ import { useState } from "react"
 import type { JSX } from "react"
 import Header from "./Header"
 import users from "./users.ts"
-import personImg from "../../assets/Person.png"
+import defaultPhoto from "../../assets/Person.png"
 
 interface User {
     name: string,
@@ -46,7 +46,7 @@ export default function Main() {
                     // Chooses either a default or custom profile photo
                     const imgUrl: string = chat.avatarUrl 
                         ? chat.avatarUrl
-                        : personImg
+                        : defaultPhoto
 
                     return (<li key={chat.id}>
 

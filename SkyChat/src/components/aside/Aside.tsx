@@ -1,4 +1,3 @@
-import personImg from "../../assets/Person.png"
 import bgImg from "../../assets/aside/Landscape.png"
 import moonImg from "../../assets/aside/Moon Symbol.png"
 import nameImg from "../../assets/aside/Name Tag.png"

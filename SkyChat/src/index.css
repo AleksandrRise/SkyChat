@@ -13,4 +13,11 @@
 @theme {
     --font-primary: dmSerif, "serif";
     --font-secondary: inter, "sans-serif";
+    --color-primary: #AAD3FF;
+    --color-secondary: #E3F7FA;
+    --color-accent: #FDC500;
+    --color-white: #F8F8F8;
+    --color-text: #000000;
+    --color-success: #5BB35B;
+    --color-error: #F5003D;
 }

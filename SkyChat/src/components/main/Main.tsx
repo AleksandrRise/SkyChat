@@ -48,19 +48,18 @@ export default function Main() {
                         ? chat.avatarUrl
                         : defaultPhoto
 
-                    return (<li key={chat.id}>
-
-                        <span>{chat.name}</span>
-                        <p>{chat.message}</p>
-                        <figure>
-                            <img src={imgUrl} alt="Profile Photo" />
-                        </figure>
-                        <span>{chat.whenTexted} min</span>
-
-                    </li>)
-                })}
-
-            </ul>
+                    return (
+                        <li key={chat.id}>
+                            <span>{chat.name}</span>
+                            <p>{chat.message}</p>
+                            <figure>
+                                <img src={imgUrl} alt="Profile Photo" />
+                            </figure>
+                            <span>{chat.whenTexted} min</span>
+                        </li>
+                    )
+                    
+                })}</ul>
         }
     }
 
@@ -80,14 +79,16 @@ export default function Main() {
                             ? chat.avatarUrl
                             : defaultPhoto
 
-                            return (<li key={chat.id}>
-                                <span>{chat.name}</span>
-                                <p>{chat.message}</p>
-                                <figure>
-                                    <img src={imgUrl} alt="Profile Photo" />
-                                </figure>
-                                <span>{chat.whenTexted} min</span>
-                            </li>)
+                            return (
+                                <li key={chat.id}>
+                                    <span>{chat.name}</span>
+                                    <p>{chat.message}</p>
+                                    <figure>
+                                        <img src={imgUrl} alt="Profile Photo" />
+                                    </figure>
+                                    <span>{chat.whenTexted} min</span>
+                                </li>
+                            )
 
                         })}
                     </ul>
@@ -98,7 +99,7 @@ export default function Main() {
     }
 
     return (
-        <main className="font-secondary font-normal">
+        <main className="font-secondary font-normal m-auto">
 
             <Header />
 

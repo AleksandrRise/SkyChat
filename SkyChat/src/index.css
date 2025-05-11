@@ -17,7 +17,8 @@
     --color-secondary: #E3F7FA;
     --color-accent: #FDC500;
     --color-white: #F8F8F8;
-    --color-text: #000000;
+    --color-textColor: #000000;
     --color-success: #5BB35B;
     --color-error: #F5003D;
+    --shadow-icons: 0px 4px 4px rgb(0, 0, 0, 0.5);
 }

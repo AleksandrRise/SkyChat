@@ -50,7 +50,7 @@ export default function chats({ users }: ChatsProps) {
                 // If there are more than 3 chats, we add a division
                 return (
                     <>
-                        {index === 3 && <div className="font-primary">Oldest</div>}
+                        {index === 3 && <div className="font-primary text-3xl tracking-widest">Oldest</div>}
                         {chatElement(chat)}
                     </>
                 )

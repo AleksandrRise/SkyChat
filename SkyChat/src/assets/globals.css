@@ -19,7 +19,8 @@
     /* Colors */
     --color-primary: #AAD3FF;
     --color-secondary: #E3F7FA;
-    --color-accent: #FDC500;
+    --color-accent1: #FDC500;
+    --color-accent2: #EDCC6F;
     --color-textColor: #000000;
     --color-success: #5BB35B;
     --color-error: #F5003D;
@@ -63,5 +64,25 @@
         right: 10px;
     }
 
+    /* When hovered */
+    .addBtnProps:hover { /* Button's Background */
+        @apply bg-accent2 cursor-pointer;
+        box-shadow: 0 0 5px #EDCC6F,
+        0 0 25px #EDCC6F;
+    }
+    .addBtnProps::before { /* Horizontal Line */
+        content: ""; 
+        @apply absolute top-5 left-2 bg-black w-8.75 h-1.25
+    }
+    .addBtnProps::after { /* Vertical Line */
+        content: "";
+        @apply absolute top-1.75 left-5.75 bg-black w-1.25 h-8.75
+    }
+    .addBtnProps:hover::before { /* Horizontal Line */
+        @apply bg-white
+    }
+    .addBtnProps:hover::after { /* Vertical Line */
+        @apply bg-white
+    }
 
 }

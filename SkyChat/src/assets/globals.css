@@ -40,8 +40,7 @@
         scrollbar-width: none;
     }
 
-    .beforeOldest {}
-    .beforeOldest::before {
+    .oldestDivider::before {
         content: "";
         position: absolute;
         height: 3px;
@@ -52,7 +51,7 @@
         top: 50%;
         left: 10px;
     }
-    .beforeOldest::after {
+    .oldestDivider::after {
         content: "";
         position: absolute;
         height: 3px;
@@ -63,4 +62,6 @@
         top: 50%;
         right: 10px;
     }
+
+
 }

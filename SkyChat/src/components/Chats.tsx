@@ -21,7 +21,7 @@ function chatElement(chat: User) {
     : defaultPhoto
 
     return (
-        <li key={chat.id} className="w-11/12 mx-auto mt-19 flex">
+        <li key={chat.id} className="w-11/12 mx-auto mt-19 flex last:pb-80">
             <figure className="w-25 h-25 bg-gray rounded-3xl flex justify-center items-center shadow-icons">
                 <img src={imgUrl} alt="Profile Photo" />
             </figure>
@@ -41,18 +41,24 @@ export default function chats({ users }: ChatsProps) {
     if (chats.length <= 0) {
         return <h2 className="text-center">You have no chats! Consider adding someone ;)</h2>
     } else {
-        return <ul className="overflow-y-auto no-scrollbar max-h-167 max-w-375 flex flex-col last:pb-80">{
+        return (
+        <>
+            <ul className="overflow-y-auto no-scrollbar max-h-full max-w-375 block">{
 
             // Taking out each chat and storing it inside a list
             chats.map((chat, index) => {
                 // If there are more than 3 chats, we add a division
                 return (
                     <>
-                        {index > 2 && <div className="font-primary">Oldest</div>}
+                        {index === 3 && <div className="font-primary">Oldest</div>}
                         {chatElement(chat)}
                     </>
                 )
 
             })}</ul>
+
+            <div className="absolute bottom-0 left-0 bg-gradient-to-t from-15% from-white to-transparent h-30 w-full" id="chatsBlender"></div>
+        </>
+        )
     }
 }

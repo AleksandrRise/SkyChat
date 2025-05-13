@@ -30,3 +30,13 @@
     --shadow-icons: 0px 4px 4px rgb(0, 0, 0, 0.5);
 
 }
+
+@layer utilities {
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+}

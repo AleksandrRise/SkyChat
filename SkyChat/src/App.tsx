@@ -4,14 +4,13 @@ import Header from "./pages/HomeScreen/Header"
 
 function App() {
   return (
-    <section className="flex w-full h-screen overflow-hidden text-textColor ">
+    <section className="flex w-full h-screen overflow-hidden text-textColor">
       
       <Aside />
 
       <Main>
         <Header />
       </Main>
-      
     </section>
   )
 }

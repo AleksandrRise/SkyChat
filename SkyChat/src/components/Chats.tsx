@@ -41,7 +41,7 @@ export default function chats({ users }: ChatsProps) {
     if (chats.length <= 0) {
         return <h2 className="text-center">You have no chats! Consider adding someone ;)</h2>
     } else {
-        return <ul className="overflow-visible max-w-375 flex flex-col">{
+        return <ul className="overflow-y-auto no-scrollbar max-h-167 max-w-375 flex flex-col last:pb-80">{
 
             // Taking out each chat and storing it inside a list
             chats.map((chat, index) => {

@@ -1,18 +1,22 @@
 @font-face {
     font-family: dmSerif;
-    src: url("./assets/fonts/DM_Serif_Text/DMSerifText-Regular.ttf");
+    src: url("./fonts/DM_Serif_Text/DMSerifText-Regular.ttf");
 }
 
 @font-face {
     font-family: inter;
-    src: url("./assets/fonts/Inter/Inter-VariableFont_opsz,wght.ttf");
+    src: url("./fonts/Inter/Inter-VariableFont_opsz,wght.ttf");
 }
 
 @import "tailwindcss";
 
 @theme {
+
+    /* Fonts */
     --font-primary: dmSerif, "serif";
     --font-secondary: inter, "sans-serif";
+
+    /* Colors */
     --color-primary: #AAD3FF;
     --color-secondary: #E3F7FA;
     --color-accent: #FDC500;
@@ -21,5 +25,7 @@
     --color-success: #5BB35B;
     --color-error: #F5003D;
     
+    /* Shadows */
     --shadow-icons: 0px 4px 4px rgb(0, 0, 0, 0.5);
+
 }

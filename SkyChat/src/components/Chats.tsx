@@ -21,13 +21,13 @@ function chatElement(chat: User) {
     : defaultPhoto
 
     return (
-        <li key={chat.id} className="w-11/12 mx-auto mt-19 flex last:pb-80">
+        <li key={chat.id} className="w-11/12 mx-auto mt-16 flex cursor-pointer last:pb-80">
             <figure className="w-25 h-25 bg-gray rounded-3xl flex justify-center items-center shadow-icons">
                 <img src={imgUrl} alt="Profile Photo" />
             </figure>
             <div className="ml-9 flex flex-col justify-center">
                 <span className="text-3xl font-regular">{chat.name}</span>
-                <p className="text-xl opacity-50 mt-2.25">{chat.message}</p>
+                <p className="text-xl opacity-50 mt-2.25 truncate max-w-175">{chat.message}</p>
             </div>
             <time className="ml-auto text-2xl opacity-25 my-auto">{chat.whenTexted} min</time>
         </li>
@@ -43,14 +43,14 @@ export default function chats({ users }: ChatsProps) {
     } else {
         return (
         <>
-            <ul className="overflow-y-auto no-scrollbar max-h-full max-w-375 block">{
+            <ul className="overflow-y-auto no-scrollbar max-h-full max-w-375 block [&>*:nth-child(5)]:mt-0">{
 
             // Taking out each chat and storing it inside a list
             chats.map((chat, index) => {
                 // If there are more than 3 chats, we add a division
                 return (
                     <>
-                        {index === 3 && <div className="font-primary text-3xl tracking-widest">Oldest</div>}
+                        {index === 3 && <div className="font-primary text-3xl tracking-widest my-14 relative beforeOldest text-center opacity-90">Oldest</div>}
                         {chatElement(chat)}
                     </>
                 )

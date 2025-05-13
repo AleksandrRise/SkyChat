@@ -39,4 +39,28 @@
         -ms-overflow-style: none;
         scrollbar-width: none;
     }
+
+    .beforeOldest {}
+    .beforeOldest::before {
+        content: "";
+        position: absolute;
+        height: 3px;
+        width: 40%;
+        background-color: #000;
+        opacity: 0.1;
+
+        top: 50%;
+        left: 10px;
+    }
+    .beforeOldest::after {
+        content: "";
+        position: absolute;
+        height: 3px;
+        width: 40%;
+        background-color: #000;
+        opacity: 0.1;
+
+        top: 50%;
+        right: 10px;
+    }
 }

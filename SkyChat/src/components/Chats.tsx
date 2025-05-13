@@ -14,7 +14,12 @@ interface ChatsProps {
 }
 
 // Returns one chat with a certain user
-function listElement(chat: User, imgUrl: string) {
+function listElement(chat: User) {
+    // Chooses either a default or custom profile photo
+    const imgUrl: string = chat.avatarUrl 
+    ? chat.avatarUrl
+    : defaultPhoto
+
     return (
         <li key={chat.id}>
             <span>{chat.name}</span>
@@ -27,6 +32,7 @@ function listElement(chat: User, imgUrl: string) {
     )
 }
 
+
 export default function chats({ users }: ChatsProps) {
     const [chats, setChats] =  useState<Array<User>>(users);
 
@@ -36,16 +42,11 @@ export default function chats({ users }: ChatsProps) {
         return <ul>{
 
             chats.map((chat, index) => {
-                // Chooses either a default or custom profile photo
-                const imgUrl: string = chat.avatarUrl 
-                    ? chat.avatarUrl
-                    : defaultPhoto
-
                 // If there are more than 3 chats, we add a division
                 return (
                     <>
                         {index > 2 && <div className="font-primary">Oldest</div>}
-                        {listElement(chat, imgUrl)}
+                        {listElement(chat)}
                     </>
                 )
 

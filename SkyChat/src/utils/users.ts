@@ -5,7 +5,7 @@ export default [
         whenTexted: 4,
         id: 1
     },
-    
+
     {
         name: "Someone BlaBlavich",
         message: "I should have texted here something exciting, but not this time I guess...",

@@ -2,38 +2,47 @@ import bgImg from "../../assets/images/aside/Landscape.png"
 import moonImg from "../../assets/images/aside/Moon Symbol.png"
 import nameImg from "../../assets/images/aside/Name Tag.png"
 import defaultPhoto from "../../assets/images/Person.png"
+import { useState } from "react"
 
 export default function Aside() {
 
+    const [isShown, setIsShown] = useState(false) 
+
     const classProps = (type: string): string => {
-        const props: string = `bg-primary shadow-icons flex justify-center items-center`
+        const props: string = `bg-primary shadow-icons flex justify-center items-center cursor-pointer
+        hover:scale-110 transition-transform duration-300`
 
         if (type === "profile") {
-            return `${props} w-22.5 h-22.5 rounded-2xl`
+            return `${props} w-22.5 h-22.5 rounded-2xl active:scale-105 active:duration-100 z-1`
         } 
-        return `${props} w-12.5 h-12.5 rounded-full hover:scale-110 transition-transform 
-        duration-300 active:opacity-50`
+        return `${props} w-12.5 h-12.5 rounded-full active:opacity-50 mb-3 absolute`
+    }
+
+    function showIcons(): void {
+        setIsShown(prevShown => !prevShown)
     }
 
     return <aside className="
-        w-45 h-full flex flex-col justify-end items-center bg-gradient-to-t 
+        w-45 bg-gradient-to-t 
         from-primary to-secondary border-r-1 border-black/10">
 
-        <button className={`${classProps("icon")}`}>
-            <img src={nameImg} className="w-11 h-11 mt-1"/>
-        </button>
-        <button className={`${classProps("icon")} my-6.25`}>
-            <img src={bgImg} className="w-11 h-11 mt-1"/>
-        </button>
-        <button className={`${classProps("icon")}`}>
-            <img src={moonImg} className="w-12 h-12 mt-1"/>
-        </button>
-        <button id="aside__profile" className={`mb-17.5 mt-8.25 
-            ${classProps("profile")}`}>
-            <figure>
-                <img src={defaultPhoto} alt="Profile Photo" />
-            </figure>
-        </button>
+        <div className="mx-auto h-full flex flex-col justify-end items-center pb-17.5 relative">
+            <button className={`${classProps("icon")} ${isShown && "-translate-y-62.5"}`}>
+                <img src={nameImg} className="w-11 h-11 mt-1"/>
+            </button>
+            <button className={`${classProps("icon")} ${isShown && "-translate-y-45"}`}>
+                <img src={bgImg} className="w-11 h-11 mt-1"/>
+            </button>
+            <button className={`${classProps("icon")} ${isShown && "-translate-y-27.5"}`}>
+                <img src={moonImg} className="w-12 h-12 mt-1"/>
+            </button>
+
+            <button id="aside__profile" className={`${classProps("profile")}`} onClick={showIcons}>
+                <figure className="z-2">
+                    <img src={defaultPhoto} alt="Profile Photo" />
+                </figure>
+            </button>
+        </div>
 
     </aside>
 }

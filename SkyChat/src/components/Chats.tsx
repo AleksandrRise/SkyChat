@@ -21,8 +21,10 @@ function chatElement(chat: User) {
     : defaultPhoto
 
     return (
-        <li key={chat.id} className="w-11/12 mx-auto mt-16 flex cursor-pointer last:pb-80">
-            <figure className="w-25 h-25 bg-gray rounded-3xl flex justify-center items-center shadow-icons">
+        <li key={chat.id} className="w-11/12 mx-auto mt-16 flex cursor-pointer last:pb-80
+        hover:border-l-2 hover:border-black/25 hover:pl-10 transition-[padding]">
+            <figure className="w-25 h-25 bg-gray rounded-3xl flex justify-center 
+            items-center shadow-icons">
                 <img src={imgUrl} alt="Profile Photo" />
             </figure>
             <div className="ml-9 flex flex-col justify-center">

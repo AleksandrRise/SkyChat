@@ -1,6 +1,7 @@
 import Main from "./pages/HomeScreen/Main"
 import Aside from "./pages/HomeScreen/Aside"
 import Header from "./pages/HomeScreen/Header"
+import Chat from "./pages/HomeScreen/Chat"
 
 function App() {
   return (
@@ -11,6 +12,9 @@ function App() {
       <Main>
         <Header />
       </Main>
+
+      <Chat />
+
     </section>
   )
 }

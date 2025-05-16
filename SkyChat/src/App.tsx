@@ -12,7 +12,6 @@ function App() {
       <Main>
         <Header />
       </Main>
-
       <Chat />
 
     </section>

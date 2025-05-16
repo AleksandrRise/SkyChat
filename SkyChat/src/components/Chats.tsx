@@ -46,7 +46,7 @@ export default function chats({ users }: ChatsProps) {
     } else {
         return (
         <>
-            <ul className="overflow-y-auto no-scrollbar max-h-full max-w-375 block [&>*:nth-child(5)]:mt-0">{
+            <ul className="overflow-y-auto no-scrollbar h-full max-w-375 block [&>*:nth-child(5)]:mt-0">{
 
             // Taking out each chat and storing it inside a list
             chats.map((chat, index) => {

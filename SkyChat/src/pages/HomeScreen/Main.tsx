@@ -9,7 +9,7 @@ interface MainProps {
 export default function Main({ children }: MainProps) {
 
     return (
-        <main className="font-secondary font-normal w-full px-30.25 pt-15 bg-white relative">
+        <main className="font-secondary font-normal w-full px-[7%] pt-15 bg-white relative">
 
             {children}
 

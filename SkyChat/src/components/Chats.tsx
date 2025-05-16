@@ -6,7 +6,7 @@ type User = {
     message: string;
     avatarUrl?: string;
     whenTexted: number;
-    id: number;
+    id?: number;
 }
 
 type ChatsProps = {

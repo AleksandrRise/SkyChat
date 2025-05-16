@@ -21,7 +21,6 @@ function chatElement(chat: User) {
     : defaultPhoto
 
     return (
-        // NOTE: Fix an issue with the last element when hovered
         <li key={chat.id} className="w-11/12 mx-auto mt-16 flex cursor-pointer last:mb-80
         hover:border-l-2 hover:border-black/25 hover:pl-10 transition-[padding]">
             <figure className="w-25 h-25 bg-gray rounded-3xl flex justify-center 
@@ -53,7 +52,8 @@ export default function chats({ users }: ChatsProps) {
                 // If there are more than 3 chats, we add a division
                 return (
                     <>
-                        {index === 3 && <div className="font-primary text-3xl tracking-widest my-14 relative oldestDivider text-center opacity-90">Oldest</div>}
+                        {index === 3 && <div className="font-primary text-3xl tracking-widest 
+                        my-14 relative oldestDivider text-center opacity-90">Oldest</div>}
                         {chatElement(chat)}
                     </>
                 )

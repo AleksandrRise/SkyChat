@@ -25,10 +25,10 @@ function chatElement(chat: User) {
         <li key={chat.id} className="w-11/12 mx-auto mt-16 flex cursor-pointer last:mb-80
         hover:border-l-2 hover:border-black/25 hover:pl-10 transition-[padding]">
             <figure className="w-25 h-25 bg-gray rounded-3xl flex justify-center 
-            items-center shadow-icons">
-                <img src={imgUrl} alt="Profile Photo" />
+            items-center shrink-0 shadow-icons">
+                <img className="w-fit h-fit" src={imgUrl} alt="Profile Photo" />
             </figure>
-            <div className="ml-9 flex flex-col justify-center">
+            <div className="ml-9 pr-auto flex flex-col justify-center">
                 <span className="text-3xl font-regular">{chat.name}</span>
                 <p className="text-xl opacity-50 mt-2.25 truncate max-w-175">{chat.message}</p>
             </div>

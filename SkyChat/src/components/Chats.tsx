@@ -30,7 +30,7 @@ function chatElement(chat: User) {
             </figure>
             <div className="ml-9 pr-auto flex flex-col justify-center">
                 <span className="text-3xl font-regular">{chat.name}</span>
-                <p className="text-xl opacity-50 mt-2.25 truncate max-w-175">{chat.message}</p>
+                <p className="text-xl opacity-50 mt-2.25 truncate max-w-11/12">{chat.message}</p>
             </div>
             <time className="ml-auto text-2xl opacity-25 my-auto">{chat.whenTexted} min</time>
         </li>

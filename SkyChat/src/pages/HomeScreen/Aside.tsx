@@ -22,9 +22,7 @@ export default function Aside() {
         setIsShown(prevShown => !prevShown)
     }
 
-    return <aside className="
-        w-45 bg-gradient-to-t 
-        from-primary to-secondary border-r-1 border-black/10">
+    return <aside className="w-45 bg-gradient-to-t from-primary to-secondary border-r-1 border-black/10">
 
         <div className="mx-auto h-full flex flex-col justify-end items-center pb-17.5 relative">
             <button className={`${classProps("icon")} ${isShown && "-translate-y-62.5"}`}>

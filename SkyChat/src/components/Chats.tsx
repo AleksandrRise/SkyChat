@@ -1,17 +1,6 @@
-import { useState } from "react"
-import defaultPhoto from "../assets/images/Person.png"
-
-type User = {
-    name: string;
-    message: string;
-    avatarUrl?: string;
-    whenTexted: number;
-    id?: number;
-}
-
-type ChatsProps = {
-    users: Array<User>;
-}
+import { useState } from "react";
+import defaultPhoto from "../assets/images/Person.png";
+import type { User } from "../utils/User";
 
 // Returns one chat with a certain user
 function ChatElement({ name, message, avatarUrl = "", whenTexted, id }: User) {
@@ -46,48 +35,57 @@ function ChatElement({ name, message, avatarUrl = "", whenTexted, id }: User) {
     )
 }
 
+type ChatsProps = {
+    chats: Array<User>;
+}
 
-export default function chats({ users }: ChatsProps) {
+function ChatsList({ chats }: ChatsProps) {
+    const ulClasses = `overflow-y-auto no-scrollbar h-full 
+    max-w-375 block [&>*:nth-child(5)]:mt-0`;
+    const chatsDivClasses = `font-primary text-3xl tracking-widest 
+    my-14 relative oldestDivider text-center opacity-90`;
+
+    return (
+        <ul className={ulClasses}>{
+            // Taking out each chat and storing it inside a list
+            chats.map((chat, index) => {
+                // If there are more than 3 chats, we add a division
+                return (
+                    <>
+                        {index === 3 && <div className={chatsDivClasses}>Oldest</div>}
+                        <ChatElement 
+                            name={chat.name}
+                            message={chat.message}
+                            avatarUrl={chat.avatarUrl}
+                            whenTexted={chat.whenTexted}
+                            id={index}
+                        />
+                    </>
+                )
+            }
+        )}</ul>
+    )
+}
+
+type UsersProps = {
+    users: Array<User>;
+}
+
+export default function Chats({ users }: UsersProps) {
     const [chats, setChats] =  useState<Array<User>>(users);
 
     const hClasses = `text-center`;
-
-    const ulClasses = `overflow-y-auto no-scrollbar h-full 
-        max-w-375 block [&>*:nth-child(5)]:mt-0`;
-
-    const chatsDivClasses = `font-primary text-3xl tracking-widest 
-        my-14 relative oldestDivider text-center opacity-90`;
-
     const blendClasses = `absolute bottom-0 left-0 bg-gradient-to-t 
         from-15% from-white to-transparent h-30 w-full`;
 
     if (chats.length <= 0) {
         return <h2 className={hClasses}>You have no chats! Consider adding someone ;)</h2>
-    } else {
-        return (
+    }
+
+    return (
         <>
-            <ul className={ulClasses}>{
-
-                // Taking out each chat and storing it inside a list
-                chats.map((chat, index) => {
-                    // If there are more than 3 chats, we add a division
-                    return (
-                        <>
-                            {index === 3 && <div className={chatsDivClasses}>Oldest</div>}
-                            <ChatElement 
-                                name={chat.name}
-                                message={chat.message}
-                                avatarUrl={chat.avatarUrl}
-                                whenTexted={chat.whenTexted}
-                                id={index}
-                            />
-                        </>
-                    )
-                }
-            )}</ul>
-
+            <ChatsList chats={chats} />
             <div className={blendClasses} id="chatsBlender"></div>
         </>
-        )
-    }
+    )
 }

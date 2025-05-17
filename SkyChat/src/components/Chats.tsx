@@ -4,6 +4,7 @@ import type { User } from "../utils/User";
 
 // Returns one chat with a certain user
 function ChatElement({ name, message, avatarUrl = "", whenTexted, id }: User) {
+
     // Chooses either a default or custom profile photo
     const imgUrl: string = avatarUrl
     ? avatarUrl
@@ -74,12 +75,14 @@ type UsersProps = {
 export default function Chats({ users }: UsersProps) {
     const [chats, setChats] =  useState<Array<User>>(users);
 
-    const hClasses = `text-center`;
+    const hClasses = `text-center mt-70 text-xl`;
     const blendClasses = `absolute bottom-0 left-0 bg-gradient-to-t 
         from-15% from-white to-transparent h-30 w-full`;
 
     if (chats.length <= 0) {
-        return <h2 className={hClasses}>You have no chats! Consider adding someone ;)</h2>
+        return (
+            <h2 className={hClasses}>You have no chats! Consider adding someone ;)</h2>
+        )
     }
 
     return (

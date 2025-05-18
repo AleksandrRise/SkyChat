@@ -1,6 +1,7 @@
 import { useState } from "react";
 import defaultPhoto from "../assets/images/Person.png";
 import type { User } from "../utils/User";
+import type { MouseEvent } from "react"
 import { useContext } from "react"
 import { ActiveContext }  from "../App"
 
@@ -24,14 +25,15 @@ function ChatElement({ name, message, avatarUrl = "", whenTexted, id }: User) {
     const pClasses = `text-xl opacity-50 mt-2.25 truncate max-w-11/12`;
     const timeClasses = `ml-auto text-2xl opacity-25 my-auto`;
 
-    function handleClick() {
+    function handleClick(e: MouseEvent<Element>) {
+        console.log(e.currentTarget)
         activeContext.setIsActive(prev => !prev);
     }
 
     const activeContext = useContext(ActiveContext);
 
     return (
-        <li key={id} className={liClasses} onClick={handleClick}>
+        <li key={id} className={liClasses} onClick={(e) => handleClick(e)}>
             <figure className={figClasses}>
                 <img className={imgClasses} src={imgUrl} alt="Profile Photo" />
             </figure>

@@ -1,12 +1,17 @@
 import type { ReactNode } from "react"
+import { useContext } from "react"
+import { ActiveContext } from "../../App"
 
 type MainProps = {
     children: ReactNode;
 }
 
 export default function Main({ children }: MainProps) {
-    const mainClasses = `font-secondary font-normal w-full block px-7.25 xl:px-30 pt-15 
-        bg-white relative flex-1`;
+    const {isActive} = useContext(ActiveContext)
+
+    const mainClassesConditional = isActive ? "px-3 xl:px-7 w-1/3" : "px-7.25 xl:px-30 w-full"
+    const mainClasses = `${mainClassesConditional} font-secondary font-normal 
+    block pt-15 bg-white relative flex-4`;
 
     return (
         <main className={mainClasses}>

@@ -15,7 +15,7 @@ export const ActiveContext = React.createContext<ActiveContext>({
   setIsActive: () => {console.error("The default ActiveContext was invoked!")}
 });
 
-function App() {
+export default function App() {
 
   const [isActive, setIsActive] = React.useState(false);
 
@@ -26,17 +26,15 @@ function App() {
       
       <Aside />
 
-      <Main>
-        <Header />
-        <ActiveContext.Provider value={{isActive, setIsActive}}>
+      <ActiveContext.Provider value={{isActive, setIsActive}}>
+        <Main>
+          <Header />
           <Chats users={users} /> 
-        </ActiveContext.Provider>
-      </Main>
+        </Main>
 
-      {isActive ? <Chat /> : null}
+        {isActive ? <Chat /> : null}
+      </ActiveContext.Provider>
 
     </section>
   )
 }
-
-export default App

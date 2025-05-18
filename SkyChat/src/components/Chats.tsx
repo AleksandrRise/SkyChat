@@ -13,24 +13,27 @@ function ChatElement({ name, message, avatarUrl = "", whenTexted, id }: User) {
     ? avatarUrl
     : defaultPhoto
 
-    const liClasses = `w-11/12 mx-auto mt-12.25 flex cursor-pointer last:mb-80
-        hover:shadow-icons p-4.25 transition`;
+    const {isActive, setIsActive} = useContext(ActiveContext);
+
+    const liClasses = `w-11/12 mx-auto mt-5 first:mt-12 flex cursor-pointer last:mb-80
+        hover:shadow-icons py-7 px-4.25 transition`;
 
     const figClasses = `w-25 h-25 bg-gray rounded-3xl flex justify-center 
         items-center shrink-0 shadow-icons`;
 
     const imgClasses = `w-fit h-fit`;
-    const divClasses = `ml-9 pr-auto flex flex-col justify-center`;
-    const spanClasses = `text-3xl font-regular`;
-    const pClasses = `text-xl opacity-50 mt-2.25 truncate max-w-11/12`;
+    const divClasses = `ml-9 flex flex-col justify-center max-w-7/12`;
+    const spanClasses = `text-3xl font-regular truncate max-w-9/10`;
+
+    const pClassesConditional = isActive ? "max-w-8/10" : "max-w-11/12"
+    const pClasses = `text-xl opacity-50 mt-2.25 truncate ${pClassesConditional}`;
+
     const timeClasses = `ml-auto text-2xl opacity-25 my-auto`;
 
     function handleClick(e: MouseEvent<Element>) {
         console.log(e.currentTarget)
-        activeContext.setIsActive(prev => !prev);
+        setIsActive(prev => !prev);
     }
-
-    const activeContext = useContext(ActiveContext);
 
     return (
         <li key={id} id={`${id}`} className={liClasses} onClick={(e) => handleClick(e)}>
@@ -51,7 +54,7 @@ type ChatsProps = {
 }
 
 function ChatsList({ chats }: ChatsProps) {
-    const ulClasses = `overflow-y-auto no-scrollbar h-full 
+    const ulClasses = `overflow-y-auto overflow-x-hidden no-scrollbar h-full 
     max-w-375 block [&>*:nth-child(5)]:mt-0`;
     const chatsDivClasses = `font-primary text-3xl tracking-widest 
     my-14 relative oldestDivider text-center opacity-90`;

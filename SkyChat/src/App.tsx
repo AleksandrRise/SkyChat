@@ -2,20 +2,38 @@ import Main from "./pages/HomeScreen/Main"
 import Aside from "./pages/HomeScreen/Aside"
 import Header from "./pages/HomeScreen/Header"
 import Chat from "./pages/HomeScreen/Chat"
+import Chats from "./components/Chats"
+import users from "./utils/users"
 import React from "react"
+
+type ActiveContext = {
+  isActive: boolean,
+  setIsActive: React.Dispatch<React.SetStateAction<boolean>> 
+}
+export const ActiveContext = React.createContext<ActiveContext>({
+  isActive: false,
+  setIsActive: () => {console.error("The default ActiveContext was invoked!")}
+});
 
 function App() {
 
+  const [isActive, setIsActive] = React.useState(false);
+
+  const wrapperClasses = "flex w-full h-screen overflow-hidden text-textColor"
+
   return (
-    <section className="flex w-full h-screen overflow-hidden text-textColor">
+    <section className={wrapperClasses}>
       
       <Aside />
 
       <Main>
         <Header />
+        <ActiveContext.Provider value={{isActive, setIsActive}}>
+          <Chats users={users} /> 
+        </ActiveContext.Provider>
       </Main>
 
-      <Chat />
+      {isActive ? <Chat /> : null}
 
     </section>
   )

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import defaultPhoto from "../assets/images/Person.png";
 import type { User } from "../utils/User";
+import { useContext } from "react"
+import { ActiveContext }  from "../App"
 
 // Returns one chat with a certain user
 function ChatElement({ name, message, avatarUrl = "", whenTexted, id }: User) {
@@ -22,8 +24,14 @@ function ChatElement({ name, message, avatarUrl = "", whenTexted, id }: User) {
     const pClasses = `text-xl opacity-50 mt-2.25 truncate max-w-11/12`;
     const timeClasses = `ml-auto text-2xl opacity-25 my-auto`;
 
+    function handleClick() {
+        activeContext.setIsActive(prev => !prev);
+    }
+
+    const activeContext = useContext(ActiveContext);
+
     return (
-        <li key={id} className={liClasses}>
+        <li key={id} className={liClasses} onClick={handleClick}>
             <figure className={figClasses}>
                 <img className={imgClasses} src={imgUrl} alt="Profile Photo" />
             </figure>

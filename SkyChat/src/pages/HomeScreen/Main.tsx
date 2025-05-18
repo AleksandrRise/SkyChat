@@ -1,6 +1,4 @@
 import type { ReactNode } from "react"
-import Chats from "../../components/Chats"
-import users from "../../utils/users"
 
 type MainProps = {
     children: ReactNode;
@@ -14,8 +12,6 @@ export default function Main({ children }: MainProps) {
         <main className={mainClasses}>
 
             {children}
-
-            <Chats users={users} />
 
         </main>
     )

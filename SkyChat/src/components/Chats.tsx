@@ -33,7 +33,7 @@ function ChatElement({ name, message, avatarUrl = "", whenTexted, id }: User) {
     const activeContext = useContext(ActiveContext);
 
     return (
-        <li key={id} className={liClasses} onClick={(e) => handleClick(e)}>
+        <li key={id} id={`${id}`} className={liClasses} onClick={(e) => handleClick(e)}>
             <figure className={figClasses}>
                 <img className={imgClasses} src={imgUrl} alt="Profile Photo" />
             </figure>

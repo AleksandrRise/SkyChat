@@ -16,7 +16,7 @@ function ChatElement({ name, message, avatarUrl = "", whenTexted, id }: User) {
     const {isActive, setIsActive} = useContext(ActiveContext);
 
     const liClasses = `w-11/12 mx-auto mt-5 first:mt-12 flex cursor-pointer last:mb-80
-        hover:shadow-icons py-7 px-4.25 transition`;
+        hover:shadow-icons py-7 px-4.25 transition dark:hover:shadow-icons-dark`;
 
     const figClasses = `w-25 h-25 bg-gray rounded-3xl flex justify-center 
         items-center shrink-0 shadow-icons`;
@@ -90,7 +90,8 @@ export default function Chats({ users }: UsersProps) {
 
     const hClasses = `text-center mt-70 text-xl`;
     const blendClasses = `absolute bottom-0 left-0 bg-gradient-to-t 
-        from-15% from-white to-transparent h-30 w-full`;
+        from-15% from-white to-transparent h-30 w-full dark:from-bg-dark
+        dark:to-transparent`;
 
     if (chats.length <= 0) {
         return (

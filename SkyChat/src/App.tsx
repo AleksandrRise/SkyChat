@@ -19,10 +19,11 @@ export default function App() {
 
   const [isActive, setIsActive] = React.useState(false);
 
-  const wrapperClasses = "flex w-full h-screen overflow-hidden text-textColor"
+  const wrapperClasses = `flex w-full h-screen overflow-hidden text-textColor
+    dark:text-white`
 
   return (
-    <section className={wrapperClasses}>
+    <section className={wrapperClasses} data-theme="light">
       
       <Aside />
 

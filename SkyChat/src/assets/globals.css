@@ -10,6 +10,8 @@
 
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 @theme {
 
     /* Fonts */
@@ -27,9 +29,16 @@
     --color-error: #F5003D;
     --color-white: #F8F8F8;
     --color-gray: #D9D9D9;
+
+    /* Colors Dark Theme */
+    --color-primary-dark: #121212;
+    --color-secondary-dark: #202020;
+    --color-accent-dark: #F2F3F4;
+    --color-bg-dark: #202020;
     
     /* Shadows */
     --shadow-icons: 0px 4px 4px rgb(0, 0, 0, 0.5);
+    --shadow-icons-dark: 0px 4px 4px rgb(72, 72, 72, 0.5)
 
 }
 
@@ -43,22 +52,24 @@
     }
 
     .oldestDivider::before {
+        @apply bg-black dark:bg-white;
+
         content: "";
         position: absolute;
         height: 3px;
         width: 40%;
-        background-color: #000;
         opacity: 0.1;
 
         top: 50%;
         left: 10px;
     }
     .oldestDivider::after {
+        @apply bg-black dark:bg-white;
+        
         content: "";
         position: absolute;
         height: 3px;
         width: 40%;
-        background-color: #000;
         opacity: 0.1;
 
         top: 50%;
@@ -73,11 +84,11 @@
     }
     .addBtnProps::before { /* Horizontal Line */
         content: ""; 
-        @apply absolute top-5 left-2 bg-black w-8.75 h-1.25
+        @apply absolute top-5 left-2 bg-black w-8.75 h-1.25 dark:bg-white; 
     }
     .addBtnProps::after { /* Vertical Line */
         content: "";
-        @apply absolute top-1.75 left-5.75 bg-black w-1.25 h-8.75
+        @apply absolute top-1.75 left-5.75 bg-black w-1.25 h-8.75 dark:bg-white;
     }
     .addBtnProps:hover::before { /* Horizontal Line */
         @apply bg-white

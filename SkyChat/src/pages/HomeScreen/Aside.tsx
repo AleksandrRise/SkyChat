@@ -51,7 +51,8 @@ export default function Aside() {
         {src: bgImg, alt: "Background Icon", offset: "-translate-y-45"},
         {src: moonImg, alt: "Moon Icon", offset: "-translate-y-27.5"},
     ];
-    const asideClasses = `w-45 bg-gradient-to-t from-primary to-secondary border-r-1 border-black/10`;
+    const asideClasses = `w-45 bg-gradient-to-t from-primary to-secondary border-r-1 border-black/10
+        dark:from-primary-dark dark:to-secondary-dark dark:border-accent-dark/10`;
     const divClasses = `mx-auto h-full flex flex-col justify-end items-center pb-17.5 relative`;
 
     return (

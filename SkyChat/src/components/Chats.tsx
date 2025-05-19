@@ -31,7 +31,7 @@ function ChatElement({ name, message, avatarUrl = "", whenTexted, id }: User) {
     const timeClasses = `ml-auto text-2xl opacity-25 my-auto`;
 
     function handleClick(e: MouseEvent<Element>) {
-        console.log(e.currentTarget)
+        console.log(e.currentTarget);
         setIsActive(prev => !prev);
     }
 

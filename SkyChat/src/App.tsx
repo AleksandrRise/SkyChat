@@ -18,14 +18,15 @@ export const ActiveContext = React.createContext<ActiveContext>({
 export default function App() {
 
   const [isActive, setIsActive] = React.useState(false);
+  const [isDark, setIsDark] = React.useState(false);
 
   const wrapperClasses = `flex w-full h-screen overflow-hidden text-textColor
     dark:text-white`
 
   return (
-    <section className={wrapperClasses} data-theme="dark">
+    <section className={wrapperClasses} data-theme={isDark ? "dark" : "light"}>
       
-      <Aside />
+      <Aside isDark={isDark} setIsDark={setIsDark}/>
 
       <ActiveContext.Provider value={{isActive, setIsActive}}>
         <Main>

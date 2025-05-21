@@ -23,7 +23,7 @@ export default function App() {
     dark:text-white`
 
   return (
-    <section className={wrapperClasses} data-theme="light">
+    <section className={wrapperClasses} data-theme="dark">
       
       <Aside />
 

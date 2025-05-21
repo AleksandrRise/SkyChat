@@ -43,6 +43,10 @@
 }
 
 @layer utilities {
+    html {
+        @apply dark:bg-bg-dark;
+    }
+
     .no-scrollbar::-webkit-scrollbar {
         display: none;
       }

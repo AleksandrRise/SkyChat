@@ -27,7 +27,6 @@ export default function Chat() {
     // Add snap so scroll could start at the end.
     // Add a border on the bottom when scrolling. When not, it doesn't show up.
     // Add animation for input when focused.
-    // Add max-width for text
     
     const ulClasses = "overflow-y-auto flex flex-col gap-10 pl-1 pb-2"
     const liClasses = "flex items-center text-xl first:mt-5"
@@ -43,7 +42,7 @@ export default function Chat() {
     const inputClasses = `text-2xl border-none outline-none w-9/10 py-6.5 px-9`
     const photoClasses = "w-17.5 h-17.5 bg-primary dark:bg-bg-dark rounded-2xl shadow-icons"
     const messageClasses = `px-6.5 py-3.75 rounded-3xl bg-primary dark:bg-bg-dark shadow-icons mx-7.75
-        max-w-3/4`
+        max-w-3/4 max-w-9/12`
 
     return (
         <section className={chatClasses}>

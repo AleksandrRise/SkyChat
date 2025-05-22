@@ -15,7 +15,7 @@ export default function Chat() {
         {avatarUrl: defaultPhoto, text: "Precisely, that was insanely cool!", isMe: false},
         {avatarUrl: defaultPhoto, text: "Alright, see ya!", isMe: true},
         {avatarUrl: defaultPhoto, text: "It was a pleasure to talk to you!", isMe: true},
-    ]
+    ].reverse()
 
     const chatClasses = `bg-gradient-to-tl from-25% from-bg-accent dark:from-primary-dark 
         transition-all to-secondary dark:to-secondary-dark border-l-1 border-black/10 
@@ -27,8 +27,8 @@ export default function Chat() {
     // Add snap so scroll could start at the end.
     // Add a border on the bottom when scrolling. When not, it doesn't show up.
     
-    const ulClasses = "overflow-y-auto flex flex-col gap-10 pl-1 pb-2"
-    const liClasses = "flex items-center text-xl first:mt-5"
+    const ulClasses = "overflow-y-auto flex flex-col-reverse gap-10 pl-1 pb-2"
+    const liClasses = "flex items-center text-xl last:mt-5"
     const divClasses = `mt-auto bg-primary dark:bg-secondary-dark 
         shadow-icons rounded-2xl mt-13.75 cursor-text relative focus-within:shadow-accent1 
         focus-within:transition focus-within:duration-600 transition-shadow duration-600`

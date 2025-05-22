@@ -32,7 +32,8 @@ export default function Chat() {
     const ulClasses = "overflow-y-auto flex flex-col gap-10 pl-1 pb-2"
     const liClasses = "flex items-center text-xl first:mt-5"
     const divClasses = `mt-auto bg-primary dark:bg-secondary-dark 
-    shadow-icons rounded-2xl mt-13.75 cursor-text relative`
+        shadow-icons rounded-2xl mt-13.75 cursor-text relative focus-within:shadow-accent1 
+        focus-within:transition focus-within:duration-600 transition duration-600`
 
     const sendClasses = `w-10 h-10 cursor-pointer absolute top-5 z-1 hover:before:content-[""]
         hover:before:h-[calc(100%+1rem)] hover:before:w-[calc(100%+1rem)] hover:before:absolute hover:before:-top-2

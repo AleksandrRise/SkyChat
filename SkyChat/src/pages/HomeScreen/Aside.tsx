@@ -1,5 +1,6 @@
 import bgImg from "../../assets/images/aside/Landscape.png"
 import moonImg from "../../assets/images/aside/Moon Symbol.png"
+import sunIcon from "../../assets/images/aside/sunicon.png"
 import nameImg from "../../assets/images/aside/Name Tag.png"
 import IconButton from "../../components/Iconbutton"
 import ProfileButton from "../../components/ProfileButton"
@@ -27,7 +28,8 @@ export default function Aside(themeState: ThemeProps) {
     const iconButtons = [
         {src: nameImg, alt: "Name Icon", offset: "-translate-y-62.5", onClick: () => {}},
         {src: bgImg, alt: "Background Icon", offset: "-translate-y-45", onClick: () => {}},
-        {src: moonImg, alt: "Moon Icon", offset: "-translate-y-27.5", onClick: () => switchTheme(themeState)}
+        {src: (themeState.isDark ? sunIcon : moonImg), alt: "Moon Icon", offset: "-translate-y-27.5", 
+            onClick: () => switchTheme(themeState)}
     ];
     const asideClasses = `w-45 bg-gradient-to-t from-primary to-secondary border-r-1 border-black/10
         dark:from-primary-dark dark:to-secondary-dark dark:border-accent-dark/10`;

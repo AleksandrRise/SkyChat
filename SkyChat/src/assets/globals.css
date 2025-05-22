@@ -88,11 +88,11 @@
     }
     .addBtnProps::before { /* Horizontal Line */
         content: ""; 
-        @apply absolute top-5 left-2 bg-black w-8.75 h-1.25 dark:bg-white; 
+        @apply absolute top-5 left-2 bg-black w-8.75 h-1.25; 
     }
     .addBtnProps::after { /* Vertical Line */
         content: "";
-        @apply absolute top-1.75 left-5.75 bg-black w-1.25 h-8.75 dark:bg-white;
+        @apply absolute top-1.75 left-5.75 bg-black w-1.25 h-8.75;
     }
     .addBtnProps:hover::before { /* Horizontal Line */
         @apply bg-white
@@ -100,4 +100,7 @@
     .addBtnProps:hover::after { /* Vertical Line */
         @apply bg-white
     }
+
+    /* Animation for Icon Theme Switch */
+    
 }

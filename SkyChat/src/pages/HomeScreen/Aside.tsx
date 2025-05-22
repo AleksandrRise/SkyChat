@@ -1,49 +1,13 @@
 import bgImg from "../../assets/images/aside/Landscape.png"
 import moonImg from "../../assets/images/aside/Moon Symbol.png"
 import nameImg from "../../assets/images/aside/Name Tag.png"
-import defaultPhoto from "../../assets/images/Person.png"
+import IconButton from "../../components/Iconbutton"
+import ProfileButton from "../../components/ProfileButton"
 import { useState } from "react"
 
 type ThemeProps = {
     isDark: boolean,
     setIsDark: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-type IconButtonProps = {
-    src: string;
-    alt: string;
-    offset?: string;
-    onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
-}
-
-function IconButton({ src, alt, offset = "", onClick}: IconButtonProps) {
-    const baseClasses = `bg-primary dark:bg-bg-dark shadow-icons flex justify-center items-center cursor-pointer
-        hover:scale-110 transition-transform duration-300 w-12.5 h-12.5 rounded-full 
-        active:opacity-50 mb-3 absolute`;
-    const imgClasses = "w-11 h-11 mt-1";
-    return (
-        <button className={`${baseClasses} ${offset}`} onClick={onClick}>
-            <img src={src} alt={alt} className={imgClasses} />
-        </button>
-    );
-}
-
-type ProfileButtonProps = {
-    onClick: () => void;
-}
-
-function ProfileButton({ onClick }: ProfileButtonProps) {
-    const buttonClasses = `bg-primary dark:bg-bg-dark shadow-icons flex justify-center items-center cursor-pointer
-        hover:scale-110 transition-transform duration-300 w-22.5 h-22.5 rounded-2xl 
-        active:scale-105 active:duration-100 z-1`;
-    const figClasses = `z-2`;
-    return (
-        <button id="aside__profile" className={buttonClasses} onClick={onClick}>
-            <figure className={figClasses}>
-                <img src={defaultPhoto} alt="Profile Photo" />
-            </figure>
-        </button>
-    )
 }
 
 function switchTheme(themeState: ThemeProps) {

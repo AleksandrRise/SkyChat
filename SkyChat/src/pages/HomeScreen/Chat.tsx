@@ -28,19 +28,18 @@ export default function Chat() {
     // Add a border on the bottom when scrolling. When not, it doesn't show up.
     // Add animation for input when focused.
     // Add max-width for text
-    // Add dark theme
     
     const ulClasses = "overflow-y-auto flex flex-col gap-10 pl-1 pb-2"
     const liClasses = "flex items-center text-xl first:mt-5"
-    const divClasses = `mt-auto bg-primary dark:bg-secondary-dark py-6.5 px-9 
-    shadow-icons rounded-2xl flex w-full mt-13.75 cursor-text`
+    const divClasses = `mt-auto bg-primary dark:bg-secondary-dark 
+    shadow-icons rounded-2xl mt-13.75 cursor-text relative`
 
-    const sendClasses = `w-10 h-10 ml-auto cursor-pointer relative z-1 hover:before:content-[""]
+    const sendClasses = `w-10 h-10 cursor-pointer absolute top-5 z-1 hover:before:content-[""]
         hover:before:h-[calc(100%+1rem)] hover:before:w-[calc(100%+1rem)] hover:before:absolute hover:before:-top-2
         hover:before:-left-3 hover:before:bg-white/25 hover:before:-z-1 hover:before:rounded-full
         before:transition-all before:duration-300 before:ease-out`
 
-    const inputClasses = `text-2xl my-auto border-none outline-none w-9/10`
+    const inputClasses = `text-2xl border-none outline-none w-9/10 py-6.5 px-9`
     const photoClasses = "w-17.5 h-17.5 bg-primary dark:bg-bg-dark rounded-2xl shadow-icons"
     const messageClasses = `px-6.5 py-3.75 rounded-3xl bg-primary dark:bg-bg-dark shadow-icons mx-7.75
         max-w-3/4`
@@ -65,14 +64,14 @@ export default function Chat() {
                 ))}
             </ul>
 
-            <label htmlFor="mesType" className={divClasses}>
-                <input id="mesType" className={inputClasses} placeholder="Type a message..."/>
+            <div className={divClasses}>
+                <input className={inputClasses} placeholder="Type a message..."/>
                 <button className={sendClasses}>
                     <figure>
                         <img src={sendBtn} alt="!Click to Send a Message!" />
                     </figure>
                 </button>
-            </label>
+            </div>
             
         </section>
     )

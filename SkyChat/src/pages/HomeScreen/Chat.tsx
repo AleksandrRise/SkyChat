@@ -23,13 +23,10 @@ export default function Chat() {
 
     const headClasses = `text-4xl font-primary text-center border-b-3 border-black/20 
         dark:border-white/20 pb-5`
-
-    // Add snap so scroll could start at the end.
-    // Add a border on the bottom when scrolling. When not, it doesn't show up.
     
     const ulClasses = "overflow-y-auto flex flex-col-reverse gap-10 pl-1 pb-2"
-    const liClasses = "flex items-center text-xl last:mt-5"
-    const divClasses = `mt-auto bg-primary dark:bg-secondary-dark 
+    const liClasses = "flex items-center text-xl last:mt-5 first:mb-3"
+    const divClasses = `bg-primary dark:bg-secondary-dark 
         shadow-icons rounded-2xl mt-13.75 cursor-text relative focus-within:shadow-accent1 
         focus-within:transition focus-within:duration-600 transition-shadow duration-600`
 
@@ -38,7 +35,7 @@ export default function Chat() {
         hover:before:-left-3 hover:before:bg-white/25 hover:before:-z-1 hover:before:rounded-full
         before:transition-all before:duration-300 before:ease-out`
 
-    const inputClasses = `text-2xl border-none outline-none w-9/10 py-6.5 px-9`
+    const inputClasses = `text-2xl border-none outline-none w-9/10 py-6.5 px-9 text-black dark:text-white`
     const photoClasses = "w-17.5 h-17.5 bg-primary dark:bg-bg-dark rounded-2xl shadow-icons"
     const messageClasses = `px-6.5 py-3.75 rounded-3xl bg-primary dark:bg-bg-dark shadow-icons mx-7.75
         max-w-3/4 max-w-9/12`

@@ -4,7 +4,7 @@ import Header from "./pages/HomeScreen/Header"
 import Chat from "./pages/HomeScreen/Chat"
 import Chats from "./components/Chats"
 import users from "./utils/users"
-import React from "react"
+import React, { useEffect } from "react"
 
 type ActiveContext = {
   isActive: boolean,
@@ -19,6 +19,16 @@ export default function App() {
 
   const [isActive, setIsActive] = React.useState(false);
   const [isDark, setIsDark] = React.useState(false);
+
+  // Checks what theme is stored in a local storage.
+  useEffect(() => {
+    const selectedTheme = localStorage.getItem("theme");
+    if (selectedTheme === "dark") {
+      setIsDark(true);
+    } else {
+      setIsDark(false);
+    }
+  }, []);
 
   const wrapperClasses = `flex w-full h-screen overflow-hidden text-textColor
     dark:text-white`

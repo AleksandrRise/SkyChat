@@ -14,8 +14,10 @@ type ThemeProps = {
 function switchTheme(themeState: ThemeProps) {
     if (themeState.isDark) {
         themeState.setIsDark(false);
+        localStorage.setItem("theme", "light");
     } else {
         themeState.setIsDark(true);
+        localStorage.setItem("theme", "dark");
     }
 }
 

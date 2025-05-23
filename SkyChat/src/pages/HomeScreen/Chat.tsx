@@ -3,7 +3,13 @@ import sendBtn from "../../assets/images/chat/sendBtn.png"
 
 export default function Chat() {
 
-    const messages = [
+    type messagesType = {
+        avatarUrl: string,
+        text: string,
+        isMe: boolean
+    }
+
+    const messages: Array<messagesType> = [
         {avatarUrl: defaultPhoto, text: "“Something discussing”", isMe: true},
         {avatarUrl: defaultPhoto, text: "“Something discussing”", isMe: true},
         {avatarUrl: defaultPhoto, text: "“Something discussing”", isMe: true},
@@ -24,10 +30,11 @@ export default function Chat() {
     const headClasses = `text-4xl font-primary text-center border-b-3 border-black/20 
         dark:border-white/20 pb-5`
     
-    const ulClasses = "overflow-y-auto flex flex-col-reverse gap-10 pl-1 pb-2"
+    const ulClasses = `overflow-y-auto flex flex-col-reverse gap-10 pl-1 pb-2
+        border-b-2 border-black/20`
     const liClasses = "flex items-center text-xl last:mt-5 first:mb-3"
-    const divClasses = `bg-primary dark:bg-secondary-dark 
-        shadow-icons rounded-2xl mt-13.75 cursor-text relative focus-within:shadow-accent1 
+    const divClasses = `bg-primary dark:bg-secondary-dark
+        shadow-icons rounded-2xl mt-5 cursor-text relative focus-within:shadow-accent1 
         focus-within:transition focus-within:duration-600 transition-shadow duration-600`
 
     const sendClasses = `w-10 h-10 cursor-pointer absolute top-5 z-1 hover:before:content-[""]
@@ -44,7 +51,7 @@ export default function Chat() {
         <section className={chatClasses}>
             <header className={headClasses}>Aleksandr Ershov</header>
 
-            <ul className={ulClasses}>
+            <ul id="chatList" className={ulClasses}>
                 {messages.map((message) => (
                     <li className={liClasses}>
                         <figure className={photoClasses}>

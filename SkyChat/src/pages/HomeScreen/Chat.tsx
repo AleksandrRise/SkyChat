@@ -1,3 +1,4 @@
+import { useState } from "react"
 import defaultPhoto from "../../assets/images/Person.png"
 import sendBtn from "../../assets/images/chat/sendBtn.png"
 
@@ -9,7 +10,8 @@ export default function Chat() {
         isMe: boolean
     }
 
-    const messages: Array<messagesType> = [
+    const [input, setInput] = useState<string>("");
+    const [messages, setMessages] = useState<Array<messagesType>>([
         {avatarUrl: defaultPhoto, text: "“Something discussing”", isMe: true},
         {avatarUrl: defaultPhoto, text: "“Something discussing”", isMe: true},
         {avatarUrl: defaultPhoto, text: "“Something discussing”", isMe: true},
@@ -21,7 +23,12 @@ export default function Chat() {
         {avatarUrl: defaultPhoto, text: "Precisely, that was insanely cool!", isMe: false},
         {avatarUrl: defaultPhoto, text: "Alright, see ya!", isMe: true},
         {avatarUrl: defaultPhoto, text: "It was a pleasure to talk to you!", isMe: true},
-    ].reverse()
+    ].reverse());
+
+    function messageSender(text: string): void {
+        const template = {avatarUrl: defaultPhoto, text: text, isMe: true}
+        setMessages(prev => [template, ...prev])
+    }
 
     const chatClasses = `bg-gradient-to-tl from-25% from-bg-accent dark:from-primary-dark 
         transition-all to-secondary dark:to-secondary-dark border-l-1 border-black/10 
@@ -68,8 +75,9 @@ export default function Chat() {
             </ul>
 
             <div className={divClasses}>
-                <input className={inputClasses} placeholder="Type a message..."/>
-                <button className={sendClasses}>
+                <input className={inputClasses} placeholder="Type a message..."
+                    onInput={e => setInput(e.currentTarget.value)}/>
+                <button className={sendClasses} onClick={() => messageSender(input)}>
                     <figure>
                         <img src={sendBtn} alt="!Click to Send a Message!" />
                     </figure>

@@ -1,4 +1,4 @@
-export type User = {
+type User = {
     name: string;
     message: string;
     avatarUrl?: string;

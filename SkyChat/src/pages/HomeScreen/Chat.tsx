@@ -52,7 +52,7 @@ export default function Chat() {
     const inputClasses = `text-2xl border-none outline-none w-9/10 py-6.5 px-9 text-black dark:text-white`
     const photoClasses = "w-17.5 h-17.5 bg-primary dark:bg-bg-dark rounded-2xl shadow-icons"
     const messageClasses = `px-6.5 py-3.75 rounded-3xl bg-primary dark:bg-bg-dark shadow-icons mx-7.75
-        max-w-3/4 max-w-9/12`
+        max-w-9/12 text-wrap`
 
     return (
         <section className={chatClasses}>

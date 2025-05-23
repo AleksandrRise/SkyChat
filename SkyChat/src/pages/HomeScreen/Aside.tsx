@@ -2,7 +2,7 @@ import bgImg from "../../assets/images/aside/Landscape.png"
 import moonImg from "../../assets/images/aside/Moon Symbol.png"
 import sunIcon from "../../assets/images/aside/sunicon.png"
 import nameImg from "../../assets/images/aside/Name Tag.png"
-import IconButton from "../../components/Iconbutton"
+import IconButton from "../../components/IconButton"
 import ProfileButton from "../../components/ProfileButton"
 import { useState } from "react"
 
@@ -56,3 +56,8 @@ export default function Aside(themeState: ThemeProps) {
         </aside>
     );
 }
+
+
+// Add its own messages and data for each chat.
+// Make the latest message from each person to be shown on the main page.
+// Initialize Spring Boot project with a database and spring security.

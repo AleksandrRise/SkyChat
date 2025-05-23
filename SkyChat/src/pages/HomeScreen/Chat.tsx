@@ -77,7 +77,9 @@ export default function Chat() {
             <div className={divClasses}>
                 <input className={inputClasses} placeholder="Type a message..."
                     onInput={e => setInput(e.currentTarget.value)}/>
-                <button className={sendClasses} onClick={() => messageSender(input)}>
+                <button className={sendClasses} onClick={() => (
+                    (input !== "") && messageSender(input)
+                )}>
                     <figure>
                         <img src={sendBtn} alt="!Click to Send a Message!" />
                     </figure>

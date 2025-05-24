@@ -1,6 +1,11 @@
-type User = {
+type Message = {
+    text: string;
+    isMe: boolean;
+}
+
+export type User = {
     name: string;
-    message: string;
+    messages: Array<Message>;
     avatarUrl?: string;
     whenTexted: number;
     id?: number;

@@ -11,19 +11,7 @@ export default function Chat() {
     }
 
     const [input, setInput] = useState<string>("");
-    const [messages, setMessages] = useState<Array<messagesType>>([
-        {avatarUrl: defaultPhoto, text: "“Something discussing”", isMe: true},
-        {avatarUrl: defaultPhoto, text: "“Something discussing”", isMe: true},
-        {avatarUrl: defaultPhoto, text: "“Something discussing”", isMe: true},
-        {avatarUrl: defaultPhoto, text: "“Something discussing”", isMe: true},
-        {avatarUrl: defaultPhoto, text: "“Something discussing”", isMe: true},
-        {avatarUrl: defaultPhoto, text: "“Something discussing”", isMe: true},
-        {avatarUrl: defaultPhoto, text: "Yeah... that was very exciting!", isMe: false},
-        {avatarUrl: defaultPhoto, text: "Especially that moment when we went to the top of the mountain. Oh yeah!!!", isMe: true},
-        {avatarUrl: defaultPhoto, text: "Precisely, that was insanely cool!", isMe: false},
-        {avatarUrl: defaultPhoto, text: "Alright, see ya!", isMe: true},
-        {avatarUrl: defaultPhoto, text: "It was a pleasure to talk to you!", isMe: true},
-    ].reverse());
+    const [messages, setMessages] = useState<Array<messagesType>>([]);
 
     function messageSender(text: string): void {
         const template = {avatarUrl: defaultPhoto, text: text, isMe: true}
@@ -38,7 +26,7 @@ export default function Chat() {
         dark:border-white/20 pb-5`
     
     const ulClasses = `overflow-y-auto flex flex-col-reverse gap-10 pl-1 pb-2
-        border-b-2 border-black/20`
+        border-b-2 border-black/20 h-full`
     const liClasses = "flex items-center text-xl last:mt-5 first:mb-3"
     const divClasses = `bg-primary dark:bg-secondary-dark
         shadow-icons rounded-2xl mt-5 cursor-text relative focus-within:shadow-accent1 
@@ -53,6 +41,12 @@ export default function Chat() {
     const photoClasses = "w-17.5 h-17.5 bg-primary dark:bg-bg-dark rounded-2xl shadow-icons"
     const messageClasses = `px-6.5 py-3.75 rounded-3xl bg-primary dark:bg-bg-dark shadow-icons mx-7.75
         max-w-9/12 text-wrap`
+
+
+    // Make each chat individual, so by clicking it wouldn't have the same messages.
+    // Make the latest message from each person to be shown on the main page.
+    // Initialize Spring Boot project with a database and spring security.
+    
 
     return (
         <section className={chatClasses}>

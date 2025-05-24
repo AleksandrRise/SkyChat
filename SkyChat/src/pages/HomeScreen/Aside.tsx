@@ -56,8 +56,3 @@ export default function Aside(themeState: ThemeProps) {
         </aside>
     );
 }
-
-
-// Add its own messages and data for each chat.
-// Make the latest message from each person to be shown on the main page.
-// Initialize Spring Boot project with a database and spring security.

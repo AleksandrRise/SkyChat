@@ -6,7 +6,7 @@ import { useContext } from "react"
 import { ActiveContext }  from "../App"
 
 // Returns one chat with a certain user
-function ChatElement({ name, message, avatarUrl = "", whenTexted, id }: User) {
+function ChatElement({ name, messages, avatarUrl = "", whenTexted, id }: User) {
 
     // Chooses either a default or custom profile photo
     const imgUrl: string = avatarUrl
@@ -31,7 +31,6 @@ function ChatElement({ name, message, avatarUrl = "", whenTexted, id }: User) {
     const timeClasses = `ml-auto text-2xl opacity-25 my-auto`;
 
     function handleClick(e: MouseEvent<Element>) {
-        console.log(e.currentTarget);
         setIsActive(prev => !prev);
     }
 
@@ -42,7 +41,7 @@ function ChatElement({ name, message, avatarUrl = "", whenTexted, id }: User) {
             </figure>
             <div className={divClasses}>
                 <span className={spanClasses}>{name}</span>
-                <p className={pClasses}>{message}</p>
+                <p className={pClasses}>{messages[0].text}</p>
             </div>
             <time className={timeClasses}>{whenTexted} min</time>
         </li>
@@ -69,7 +68,7 @@ function ChatsList({ chats }: ChatsProps) {
                         {index === 3 && <div className={chatsDivClasses}>Oldest</div>}
                         <ChatElement 
                             name={chat.name}
-                            message={chat.message}
+                            messages={chat.messages}
                             avatarUrl={chat.avatarUrl}
                             whenTexted={chat.whenTexted}
                             id={index}
@@ -87,6 +86,8 @@ type UsersProps = {
 
 export default function Chats({ users }: UsersProps) {
     const [chats, setChats] =  useState<Array<User>>(users);
+
+    console.log(chats[0].messages)
 
     const hClasses = `text-center mt-70 text-xl`;
     const blendClasses = `absolute bottom-0 left-0 bg-gradient-to-t 

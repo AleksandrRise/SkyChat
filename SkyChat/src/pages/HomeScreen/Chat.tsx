@@ -44,7 +44,6 @@ export default function Chat() {
 
 
     // Make each chat individual, so by clicking it wouldn't have the same messages.
-    // Make the latest message from each person to be shown on the main page.
     // Initialize Spring Boot project with a database and spring security.
     
 
@@ -61,9 +60,7 @@ export default function Chat() {
                         <p className={messageClasses}>
                             {message.text}
                         </p>
-                        <span className="opacity-25">
-                            {message.isMe ? "Me" : null}
-                        </span>
+                        {message.isMe ? <span className="opacity-25">Me</span> : null}
                     </li>
                 ))}
             </ul>

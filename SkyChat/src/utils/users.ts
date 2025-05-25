@@ -27,8 +27,8 @@ export default [
     {
         name: "Hop Hovov",
         messages: [
-            {avatarUrl: defaultPhoto, text: "“Something discussing”", isMe: true},
-            {avatarUrl: defaultPhoto, text: "“Something discussing”", isMe: false},
+            {text: "“Something discussing”", isMe: true},
+            {text: "“Something discussing”", isMe: false},
         ],
         whenTexted: 10,
     },

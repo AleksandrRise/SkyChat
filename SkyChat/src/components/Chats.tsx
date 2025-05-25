@@ -41,7 +41,7 @@ function ChatElement({ name, messages, avatarUrl = "", whenTexted, id }: User) {
             </figure>
             <div className={divClasses}>
                 <span className={spanClasses}>{name}</span>
-                <p className={pClasses}>{messages[0].text}</p>
+                <p className={pClasses}>{messages[messages.length-1].text}</p>
             </div>
             <time className={timeClasses}>{whenTexted} min</time>
         </li>
@@ -86,8 +86,6 @@ type UsersProps = {
 
 export default function Chats({ users }: UsersProps) {
     const [chats, setChats] =  useState<Array<User>>(users);
-
-    console.log(chats[0].messages)
 
     const hClasses = `text-center mt-70 text-xl`;
     const blendClasses = `absolute bottom-0 left-0 bg-gradient-to-t 

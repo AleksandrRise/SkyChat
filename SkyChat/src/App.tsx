@@ -41,7 +41,7 @@ export default function App() {
       <ActiveContext.Provider value={{isActive, setIsActive}}>
         <Main>
           <Header />
-          <Chats users={users} /> 
+          <Chats users={users.reverse()} /> 
         </Main>
 
         {isActive ? <Chat /> : null}

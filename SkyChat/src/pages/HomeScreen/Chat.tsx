@@ -67,18 +67,19 @@ export default function Chat({ chatClickedId }: ChatProps) {
         max-w-9/12 text-wrap`
 
 
-    // Make each chat individual, so by clicking it wouldn't have the same messages.
     // Fix the issue with adding a new message into array.
+    // Reorganize everything and clean everything up.
     // Make a signup/login page using routing.
     // Initialize Spring Boot web project with a database and spring security.
     
+    const reversedMessages = [...messages].reverse();
 
     return (
         <section className={chatClasses}>
             <header className={headClasses}>Aleksandr Ershov</header>
 
             <ul id="chatList" className={ulClasses}>
-                {messages.map((message) => {
+                {reversedMessages.map((message) => {
                     // Chooses either a default or custom profile photo
                     const avatar = determinePhoto(message)
 

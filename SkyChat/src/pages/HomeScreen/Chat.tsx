@@ -28,6 +28,20 @@ export default function Chat({ chatClickedId }: ChatProps) {
         setMessages(prev => [template, ...prev])
     }
 
+    type determinePhotoType = {
+        avatarUrl?: string;
+        text: string;
+        isMe: boolean;
+    }
+
+    function determinePhoto(message: determinePhotoType) {
+        return (
+            message.avatarUrl
+            ? message.avatarUrl
+            : defaultPhoto
+        )
+    }
+
     const chatClasses = `bg-gradient-to-tl from-25% from-bg-accent dark:from-primary-dark 
         transition-all to-secondary dark:to-secondary-dark border-l-1 border-black/10 
         dark:border-white/10 h-full float-end flex-5 py-12 px-16 flex flex-col`;
@@ -54,7 +68,8 @@ export default function Chat({ chatClickedId }: ChatProps) {
 
 
     // Make each chat individual, so by clicking it wouldn't have the same messages.
-    // Make a signup/login page using routing
+    // Fix the issue with adding a new message into array.
+    // Make a signup/login page using routing.
     // Initialize Spring Boot web project with a database and spring security.
     
 
@@ -63,17 +78,22 @@ export default function Chat({ chatClickedId }: ChatProps) {
             <header className={headClasses}>Aleksandr Ershov</header>
 
             <ul id="chatList" className={ulClasses}>
-                {messages.map((message) => (
-                    <li className={liClasses}>
-                        <figure className={photoClasses}>
-                            <img src={message.avatarUrl} alt="Profile Photo" />
-                        </figure>
-                        <p className={messageClasses}>
-                            {message.text}
-                        </p>
-                        {message.isMe ? <span className="opacity-25">Me</span> : null}
-                    </li>
-                ))}
+                {messages.map((message) => {
+                    // Chooses either a default or custom profile photo
+                    const avatar = determinePhoto(message)
+
+                    return (
+                        <li className={liClasses}>
+                            <figure className={photoClasses}>
+                                <img src={avatar} alt="Profile Photo" />
+                            </figure>
+                            <p className={messageClasses}>
+                                {message.text}
+                            </p>
+                            {message.isMe ? <span className="opacity-25">Me</span> : null}
+                        </li>
+                    )
+                })}
             </ul>
 
             <div className={divClasses}>

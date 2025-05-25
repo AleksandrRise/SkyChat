@@ -6,7 +6,7 @@ import { useContext } from "react"
 import { ActiveContext }  from "../App"
 
 // Returns one chat with a certain user
-function ChatElement({ name, messages, avatarUrl = "", whenTexted, id, setChatClickedId}: User) {
+function ChatElement({ name, messages, avatarUrl, whenTexted, id, setChatClickedId}: User) {
 
     // Chooses either a default or custom profile photo
     const imgUrl: string = avatarUrl

@@ -6,7 +6,7 @@ import { useContext } from "react"
 import { ActiveContext }  from "../App"
 
 // Returns one chat with a certain user
-function ChatElement({ name, messages, avatarUrl = "", whenTexted, id }: User) {
+function ChatElement({ name, messages, avatarUrl = "", whenTexted, id, setChatClickedId}: User) {
 
     // Chooses either a default or custom profile photo
     const imgUrl: string = avatarUrl
@@ -34,7 +34,8 @@ function ChatElement({ name, messages, avatarUrl = "", whenTexted, id }: User) {
         if (!isActive) {
             setIsActive(prev => !prev);
         }
-        
+        setChatClickedId(Number(e.currentTarget.id));
+
     }
 
     return (
@@ -53,9 +54,10 @@ function ChatElement({ name, messages, avatarUrl = "", whenTexted, id }: User) {
 
 type ChatsProps = {
     chats: Array<User>;
+    setChatClickedId: React.Dispatch<React.SetStateAction<number>>;
 }
 
-function ChatsList({ chats }: ChatsProps) {
+function ChatsList({ chats, setChatClickedId}: ChatsProps) {
     const ulClasses = `overflow-y-auto overflow-x-hidden no-scrollbar h-full 
     max-w-375 block [&>*:nth-child(5)]:mt-0`;
     const chatsDivClasses = `font-primary text-3xl tracking-widest 
@@ -75,6 +77,7 @@ function ChatsList({ chats }: ChatsProps) {
                             avatarUrl={chat.avatarUrl}
                             whenTexted={chat.whenTexted}
                             id={index}
+                            setChatClickedId={setChatClickedId}
                         />
                     </>
                 )
@@ -85,9 +88,10 @@ function ChatsList({ chats }: ChatsProps) {
 
 type UsersProps = {
     users: Array<User>;
+    setChatClickedId: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export default function Chats({ users }: UsersProps) {
+export default function Chats({ users, setChatClickedId}: UsersProps) {
     const [chats, setChats] =  useState<Array<User>>(users);
 
     const hClasses = `text-center mt-70 text-xl`;
@@ -103,7 +107,7 @@ export default function Chats({ users }: UsersProps) {
 
     return (
         <>
-            <ChatsList chats={chats} />
+            <ChatsList chats={chats} setChatClickedId={setChatClickedId} />
             <div className={blendClasses} id="chatsBlender"></div>
         </>
     )

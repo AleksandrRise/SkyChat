@@ -1,17 +1,27 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import defaultPhoto from "../../assets/images/Person.png"
 import sendBtn from "../../assets/images/chat/sendBtn.png"
+import users from "../../utils/users"
 
-export default function Chat() {
+type ChatProps = {
+    chatClickedId: number;
+}
+
+export default function Chat({ chatClickedId }: ChatProps) {
 
     type messagesType = {
-        avatarUrl: string,
+        avatarUrl?: string,
         text: string,
         isMe: boolean
     }
 
     const [input, setInput] = useState<string>("");
     const [messages, setMessages] = useState<Array<messagesType>>([]);
+
+    // Every time chat clicked id changes, show new set of messages.
+    useEffect(() => {
+        setMessages(users[chatClickedId].messages)
+    }, [chatClickedId])
 
     function messageSender(text: string): void {
         const template = {avatarUrl: defaultPhoto, text: text, isMe: true}
@@ -44,7 +54,8 @@ export default function Chat() {
 
 
     // Make each chat individual, so by clicking it wouldn't have the same messages.
-    // Initialize Spring Boot project with a database and spring security.
+    // Make a signup/login page using routing
+    // Initialize Spring Boot web project with a database and spring security.
     
 
     return (

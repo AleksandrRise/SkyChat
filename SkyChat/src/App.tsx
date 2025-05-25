@@ -19,6 +19,7 @@ export default function App() {
 
   const [isActive, setIsActive] = React.useState(false);
   const [isDark, setIsDark] = React.useState(false);
+  const [chatClickedId, setChatClickedId] = React.useState(-1);
 
   // Checks what theme is stored in a local storage.
   useEffect(() => {
@@ -41,10 +42,10 @@ export default function App() {
       <ActiveContext.Provider value={{isActive, setIsActive}}>
         <Main>
           <Header />
-          <Chats users={users.reverse()} /> 
+          <Chats users={users.reverse()} setChatClickedId={setChatClickedId} /> 
         </Main>
 
-        {isActive ? <Chat /> : null}
+        {isActive ? <Chat chatClickedId={chatClickedId}/> : null}
       </ActiveContext.Provider>
 
     </section>

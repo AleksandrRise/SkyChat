@@ -24,7 +24,8 @@ export default function Chat({ chatClickedId }: ChatProps) {
     }, [chatClickedId])
 
     function messageSender(text: string): void {
-        const template = {avatarUrl: defaultPhoto, text: text, isMe: true}
+        const template = {text: text, isMe: true}
+        users[chatClickedId].messages.push(template)
         setMessages(prev => [template, ...prev])
     }
 
@@ -67,7 +68,7 @@ export default function Chat({ chatClickedId }: ChatProps) {
         max-w-9/12 text-wrap`
 
 
-    // Fix the issue with adding a new message into array.
+    // Fix a bug with adding a few messages at once for the other chats.
     // Reorganize everything and clean everything up.
     // Make a signup/login page using routing.
     // Initialize Spring Boot web project with a database and spring security.

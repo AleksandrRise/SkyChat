@@ -30,16 +30,15 @@ function ChatElement({ name, messages, avatarUrl, whenTexted, id, setChatClicked
 
     const timeClasses = `ml-auto text-2xl opacity-25 my-auto`;
 
-    function handleClick(e: MouseEvent<Element>) {
+    function handleOneClick(e: MouseEvent<Element>) {
         if (!isActive) {
             setIsActive(prev => !prev);
         }
         setChatClickedId(Number(e.currentTarget.id));
-
     }
 
     return (
-        <li key={id} id={`${id}`} className={liClasses} onClick={(e) => handleClick(e)}>
+        <li key={id} id={`${id}`} className={liClasses} onClick={(e) => handleOneClick(e)}>
             <figure className={figClasses}>
                 <img className={imgClasses} src={imgUrl} alt="Profile Photo" />
             </figure>

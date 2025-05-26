@@ -18,7 +18,7 @@ export default function Chat({ chatClickedId }: ChatProps) {
     const [input, setInput] = useState<string>("");
     const [messages, setMessages] = useState<Array<messagesType>>([]);
 
-    // Every time chat clicked id changes, show new set of messages.
+    // Every time chatClickedId changes, show new set of messages.
     useEffect(() => {
         setMessages(users[chatClickedId].messages)
     }, [chatClickedId])
@@ -68,8 +68,6 @@ export default function Chat({ chatClickedId }: ChatProps) {
         max-w-9/12 text-wrap`
 
 
-    // Fix a bug with adding a few messages at once for the other chats.
-    // Make a chat closed if clicked twice (onDoubleClick)
     // Reorganize everything and clean everything up.
     // Make a signup/login page using routing.
     // Initialize Spring Boot web project with a database and spring security.
@@ -78,7 +76,7 @@ export default function Chat({ chatClickedId }: ChatProps) {
 
     return (
         <section className={chatClasses}>
-            <header className={headClasses}>Aleksandr Ershov</header>
+            <header className={headClasses}>{users[chatClickedId].name}</header>
 
             <ul id="chatList" className={ulClasses}>
                 {reversedMessages.map((message) => {

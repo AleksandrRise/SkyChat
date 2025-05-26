@@ -1,8 +1,6 @@
 import Main from "./pages/HomeScreen/Main"
 import Aside from "./pages/HomeScreen/Aside"
-import Header from "./pages/HomeScreen/Header"
 import Chat from "./pages/HomeScreen/Chat"
-import Chats from "./components/Chats"
 import users from "./utils/users"
 import React, { useEffect } from "react"
 
@@ -41,8 +39,8 @@ export default function App() {
 
       <ActiveContext.Provider value={{isActive, setIsActive}}>
         <Main>
-          <Header />
-          <Chats users={users.reverse()} setChatClickedId={setChatClickedId} /> 
+          <Main.Header />
+          <Main.Chats users={users.reverse()} setChatClickedId={setChatClickedId} /> 
         </Main>
 
         {isActive ? <Chat chatClickedId={chatClickedId}/> : null}

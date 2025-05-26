@@ -1,6 +1,8 @@
 import type { ReactNode } from "react"
 import { useContext } from "react"
 import { ActiveContext } from "../../App"
+import Header from "./Header"
+import Chats from "./Chats"
 
 type MainProps = {
     children: ReactNode;
@@ -21,3 +23,6 @@ export default function Main({ children }: MainProps) {
         </main>
     )
 }
+
+Main.Header = Header
+Main.Chats = Chats

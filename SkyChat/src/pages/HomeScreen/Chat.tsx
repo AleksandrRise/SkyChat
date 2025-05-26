@@ -25,8 +25,8 @@ export default function Chat({ chatClickedId }: ChatProps) {
 
     function messageSender(text: string): void {
         const template = {text: text, isMe: true}
-        users[chatClickedId].messages.push(template)
-        setMessages(prev => [template, ...prev])
+        setMessages(prev => [...prev, template])
+        users[chatClickedId].messages = messages
     }
 
     type determinePhotoType = {
@@ -69,6 +69,7 @@ export default function Chat({ chatClickedId }: ChatProps) {
 
 
     // Fix a bug with adding a few messages at once for the other chats.
+    // Make a chat closed if clicked twice (onDoubleClick)
     // Reorganize everything and clean everything up.
     // Make a signup/login page using routing.
     // Initialize Spring Boot web project with a database and spring security.

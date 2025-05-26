@@ -4,6 +4,7 @@ import Chat from "./pages/HomeScreen/Chat"
 import users from "./utils/users"
 import React, { useEffect } from "react"
 
+// Context for isActive state.
 type ActiveContext = {
   isActive: boolean,
   setIsActive: React.Dispatch<React.SetStateAction<boolean>> 
@@ -15,6 +16,7 @@ export const ActiveContext = React.createContext<ActiveContext>({
 
 export default function App() {
 
+  // States.
   const [isActive, setIsActive] = React.useState(false);
   const [isDark, setIsDark] = React.useState(false);
   const [chatClickedId, setChatClickedId] = React.useState(-1);
@@ -29,6 +31,7 @@ export default function App() {
     }
   }, []);
 
+  // Classes variables.
   const wrapperClasses = `flex w-full h-screen overflow-hidden text-textColor
     dark:text-white`
 
@@ -40,7 +43,7 @@ export default function App() {
       <ActiveContext.Provider value={{isActive, setIsActive}}>
         <Main>
           <Main.Header />
-          <Main.Chats users={users.reverse()} setChatClickedId={setChatClickedId} /> 
+          <Main.Chats users={users} setChatClickedId={setChatClickedId} /> 
         </Main>
 
         {isActive ? <Chat chatClickedId={chatClickedId}/> : null}

@@ -1,7 +1,7 @@
 import type { MouseEvent, Dispatch, SetStateAction } from "react"
 import { useContext } from "react"
-import { ActiveContext }  from "../App"
-import defaultPhoto from "../assets/images/Person.png";
+import { ActiveContext }  from "../../App"
+import defaultPhoto from "../../assets/images/Person.png";
 
 type Message = {
     text: string;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { User } from "../../utils/User";
-import ChatElement from "../../components/ChatElement";
+import ChatElement from "../../components/Home/ChatElement";
 import type { UsersProps } from "../../utils/UsersProps"
 
 function ChatsList({ users, setChatClickedId}: UsersProps) {

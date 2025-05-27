@@ -2,8 +2,8 @@ import bgImg from "../../assets/images/aside/Landscape.png"
 import moonImg from "../../assets/images/aside/Moon Symbol.png"
 import sunIcon from "../../assets/images/aside/sunicon.png"
 import nameImg from "../../assets/images/aside/Name Tag.png"
-import IconButton from "../../components/IconButton"
-import ProfileButton from "../../components/ProfileButton"
+import IconButton from "../../components/Home/IconButton"
+import ProfileButton from "../../components/Home/ProfileButton"
 import { useState } from "react"
 
 type ThemeProps = {

@@ -1,4 +1,4 @@
-import defaultPhoto from "../assets/images/Person.png"
+import defaultPhoto from "../../assets/images/Person.png"
 
 type ProfileButtonProps = {
     onClick: () => void;

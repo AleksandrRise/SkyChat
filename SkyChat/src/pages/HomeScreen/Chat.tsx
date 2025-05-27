@@ -76,7 +76,6 @@ export default function Chat({ chatClickedId }: ChatProps) {
         max-w-9/12 text-wrap`
 
 
-    // One message gets deleted when wandering between chats. Fix this.
     // Make a signup/login page using routing.
     // Initialize Spring Boot web project with a database and spring security.
 

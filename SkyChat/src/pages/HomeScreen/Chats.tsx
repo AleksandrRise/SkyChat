@@ -1,11 +1,7 @@
 import { useState } from "react";
 import type { User } from "../../utils/User";
 import ChatElement from "../../components/ChatElement";
-
-type UsersProps = {
-    users: Array<User>;
-    setChatClickedId: React.Dispatch<React.SetStateAction<number>>;
-}
+import type { UsersProps } from "../../utils/UsersProps"
 
 function ChatsList({ users, setChatClickedId}: UsersProps) {
 

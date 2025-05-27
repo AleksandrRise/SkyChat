@@ -1,12 +1,25 @@
-import type { MouseEvent } from "react"
+import type { MouseEvent, Dispatch, SetStateAction } from "react"
 import { useContext } from "react"
 import { ActiveContext }  from "../App"
 import defaultPhoto from "../assets/images/Person.png";
-import type { User } from "../utils/User";
+
+type Message = {
+    text: string;
+    isMe: boolean;
+}
+
+type ChatElementProps = {
+    name: string;
+    messages: Array<Message>;
+    avatarUrl?: string;
+    whenTexted: number;
+    id?: number;
+    setChatClickedId: Dispatch<SetStateAction<number>>;
+}
 
 // Returns one chat with a certain user
-export default function ChatElement({ name, messages, avatarUrl, whenTexted, id, 
-                                    setChatClickedId}: User) {
+export default function ChatElement({ name, messages, avatarUrl, 
+                                    whenTexted, id, setChatClickedId }: ChatElementProps) {
 
     // Chooses either a default or custom profile photo.
     const imgUrl: string = avatarUrl

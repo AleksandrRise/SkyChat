@@ -1,5 +1,3 @@
-import defaultPhoto from "../assets/images/Person.png"
-
 export default [
     {
         name: "Aleksandr Ershov",

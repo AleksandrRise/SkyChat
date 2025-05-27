@@ -9,5 +9,4 @@ export type User = {
     avatarUrl?: string;
     whenTexted: number;
     id?: number;
-    setChatClickedId?: React.Dispatch<React.SetStateAction<number>>;
 }

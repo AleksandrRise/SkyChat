@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react"
-import defaultPhoto from "../../assets/images/Person.png"
-import sendBtn from "../../assets/images/chat/sendBtn.png"
-import users from "../../utils/users"
+import { useEffect, useState } from "react";
+import defaultPhoto from "../../assets/images/Person.png";
+import sendBtn from "../../assets/images/chat/sendBtn.png";
+import users from "../../utils/users";
 
 type ChatProps = {
     chatClickedId: number;
@@ -20,15 +20,23 @@ export default function Chat({ chatClickedId }: ChatProps) {
 
     // Every time chatClickedId changes, shows new set of messages.
     useEffect(() => {
-        setMessages(users[chatClickedId].messages)
+        const messagesToInsert = [...users[chatClickedId].messages];
+        setMessages(messagesToInsert);
     }, [chatClickedId])
 
     // Sends a message and stores into a database.
     function messageSender(e: React.FormEvent<HTMLFormElement>): void {
         e.preventDefault();
-        const template = {text: input, isMe: true}
-        setMessages(prev => [...prev, template])
-        users[chatClickedId].messages = messages
+        const template = {text: input, isMe: true};
+
+        setMessages(prev => {
+            const newMessages = [template, ...prev];
+
+            users[chatClickedId].messages = newMessages;
+            return newMessages;
+        });
+
+        users[chatClickedId].messages = messages;
     }
 
     type determinePhotoType = {
@@ -71,7 +79,6 @@ export default function Chat({ chatClickedId }: ChatProps) {
     // One message gets deleted when wandering between chats. Fix this.
     // Make a signup/login page using routing.
     // Initialize Spring Boot web project with a database and spring security.
-    
 
     return (
         <section className={chatClasses}>
@@ -81,7 +88,7 @@ export default function Chat({ chatClickedId }: ChatProps) {
                 {messages.map((message) => {
 
                     // Chooses either a default or custom profile photo.
-                    const avatar = determinePhoto(message)
+                    const avatar: string = determinePhoto(message)
 
                     return (
                         <li className={liClasses}>

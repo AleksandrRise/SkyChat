@@ -2,13 +2,13 @@ export default [
     {
         name: "Aleksandr Ershov",
         messages: [
-            {text: "“Something discussing”", isMe: true},
-            {text: "“Something discussing”", isMe: true},
-            {text: "Yeah... that was very exciting!", isMe: false},
-            {text: "Especially that moment when we went to the top of the mountain. Oh yeah!!!", isMe: true},
-            {text: "Precisely, that was insanely cool!", isMe: false},
+            {text: "It was a pleasure to talk to you!", isMe: true},
             {text: "Alright, see ya!", isMe: true},
-            {text: "It was a pleasure to talk to you!", isMe: true}
+            {text: "Precisely, that was insanely cool!", isMe: false},
+            {text: "Especially that moment when we went to the top of the mountain. Oh yeah!!!", isMe: true},
+            {text: "Yeah... that was very exciting!", isMe: false},
+            {text: "“Something discussing”", isMe: true},
+            {text: "“Something discussing”", isMe: true}
         ],
         whenTexted: 4,
     },

@@ -56,7 +56,7 @@ export default function ChatElement({ name, messages, avatarUrl,
             </figure>
             <div className={divClasses}>
                 <span className={spanClasses}>{name}</span>
-                <p className={pClasses}>{messages[messages.length-1].text}</p>
+                <p className={pClasses}>{messages[0].text}</p>
             </div>
             <time className={timeClasses}>{whenTexted} min</time>
         </li>

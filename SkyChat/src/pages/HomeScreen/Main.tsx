@@ -9,6 +9,8 @@ type MainProps = {
 }
 
 export default function Main({ children }: MainProps) {
+
+    // Contexts.
     const {isActive} = useContext(ActiveContext)
 
     // Classes variables.

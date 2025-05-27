@@ -1,16 +1,16 @@
+import './assets/globals.css';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import './assets/globals.css';
-import App from './App.tsx';
-import Main from "./pages/AuthScreen/Main.tsx";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import App from './App.tsx';
+import AppAuth from './AppAuth.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/auth" element={<Main />} />
+        <Route path="/auth" element={<AppAuth />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

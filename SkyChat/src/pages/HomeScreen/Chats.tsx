@@ -37,7 +37,7 @@ function ChatsList({ users, setChatClickedId}: UsersProps) {
 export default function Chats({ users, setChatClickedId}: UsersProps) {
 
     // States.
-    const [usersState, setUsersState] =  useState<Array<User>>(users);
+    const [usersState] =  useState<Array<User>>(users);
 
     // Classes variables.
     const hClasses = `text-center mt-70 text-xl`;

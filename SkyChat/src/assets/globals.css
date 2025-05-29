@@ -39,6 +39,7 @@
     /* Shadows */
     --shadow-icons: 0px 4px 4px rgb(0, 0, 0, 0.5);
     --shadow-icons-dark: 0px 4px 4px rgb(72, 72, 72, 0.5);
+    --shadow-donebtn: -2px 4px 4px rgba(253, 197, 0, 0.5);
 
 }
 
@@ -99,6 +100,14 @@
     }
     .addBtnProps:hover::after { /* Vertical Line */
         @apply bg-white
+    }
+
+    .borderForInput {
+        border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+        transition: border 0.1s ease-in-out;
+    }
+    .borderForInput:focus {
+        border-color: rgba(0, 0, 0, 0.75);
     }
 
     /* Animation for Icon Theme Switch */

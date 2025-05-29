@@ -1,7 +1,12 @@
-import Main from "./pages/AuthScreen/Main";
+import SignUp from "./pages/AuthScreen/SignUp";
+import SignIn from "./pages/AuthScreen/SignIn";
 import Logo from "./pages/AuthScreen/Logo.tsx";
+import { useState } from "react";
 
 export default function AppAuth() {
+
+    // States.
+    const [isSignUp, setIsSignUp] = useState(true);
 
     // Classes variables.
     const mainClasses = `relative h-screen w-full flex justify-center items-center
@@ -10,7 +15,9 @@ export default function AppAuth() {
     return (
         <main className={mainClasses}>
             <Logo />
-            <Main />
+            {isSignUp 
+                ? <SignUp setIsSignUp={setIsSignUp} /> 
+                : <SignIn setIsSignUp={setIsSignUp} />}
         </main>
     )
 }

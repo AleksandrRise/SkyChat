@@ -1,4 +1,10 @@
-export default function Main() {
+import React from "react"
+
+type SignUpProps = {
+    setIsSignUp: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function SignIn({ setIsSignUp }: SignUpProps) {
 
     // Classes Variables.
     const formClasses = `py-18.75 px-22 bg-white color-black font-secondary
@@ -25,16 +31,15 @@ export default function Main() {
     // Finish styling
 
     const inputs = [
-        {type: "text", placeholder:"Your Username"},
         {type: "email", placeholder:"Your Email"},
         {type: "password", placeholder:"Your Password"}
     ]
 
     return (
-        <form className={formClasses}>
+        <form className={formClasses} onSubmit={(e) => e.preventDefault()}>
             <section className={titleSectionClasses}>
-                <h1 className={hClasses}>Create <span className={innerSpanClasses}>Account</span></h1>
-                <p className={pClasses}>Create account to enter the chat</p>
+                <h1 className={hClasses}>Log Into <span className={innerSpanClasses}>Account</span></h1>
+                <p className={pClasses}>Type the required data to enter the chat</p>
                 <div className={borderClasses}></div>
             </section>
 
@@ -47,9 +52,10 @@ export default function Main() {
             </section>
 
             <section className={submissionClasses}>
-                <button className={signinBtnClasses}>Sign In</button>
+                <button className={signinBtnClasses} onClick={() => setIsSignUp(true)}>Sign Up</button>
                 <input type="submit" value="Done!" className={doneClasses} />
             </section>
         </form>
     )
+
 }

@@ -13,6 +13,7 @@ export default function Main() {
     const inputsSectionClasses = `pb-21 flex flex-col gap-12`
     const inputClasses = `block outline-none w-full text-xl placeholder-black/25
         border-1 border-b border-solid p-3.5`
+    const signinBtnClasses = `text-xl cursor-pointer underline text-[#4FA4FF]`;
 
     // Find a way to make the border only in the bottom.
     // Finish styling
@@ -40,7 +41,7 @@ export default function Main() {
             </section>
 
             <section>
-                <button>Sign In</button>
+                <button className={signinBtnClasses}>Sign In</button>
                 <input type="submit" value="Submit" />
             </section>
         </form>

@@ -6,7 +6,7 @@ import { useState } from "react";
 export default function AppAuth() {
 
     // States.
-    const [isSignUp, setIsSignUp] = useState(true);
+    const [isSignUp, setIsSignUp] = useState(false);
 
     // Classes variables.
     const mainClasses = `relative h-screen w-full flex justify-center items-center

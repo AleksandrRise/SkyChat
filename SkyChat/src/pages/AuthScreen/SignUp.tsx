@@ -27,9 +27,6 @@ export default function SignUp({ setIsSignUp }: SignUpProps) {
         hover:scale-105 duration-500 hover:duration-200 active:opacity-80
         active:duration-0`;
 
-    // Find a way to make the border only in the bottom.
-    // Finish styling
-
     const inputs = [
         {type: "text", placeholder:"Your Username"},
         {type: "email", placeholder:"Your Email"},

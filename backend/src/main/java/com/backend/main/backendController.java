@@ -1,12 +1,15 @@
 package com.backend.main;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class backendController {
-    @GetMapping
-    public String getText() {
-        return "Hello World!";
+
+//    @CrossOrigin(origins = "http://localhost:5173")
+    @PostMapping("/greeting")
+    public String sendText(@RequestBody String word) {
+        return word;
     }
+
 }

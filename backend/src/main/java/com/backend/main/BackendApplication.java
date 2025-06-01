@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SkyChatApplication {
+public class BackendApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SkyChatApplication.class, args);
+		SpringApplication.run(BackendApplication.class, args);
 	}
 
 }

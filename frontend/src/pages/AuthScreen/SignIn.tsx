@@ -33,7 +33,7 @@ export default function SignIn({ setIsSignUp }: SignUpProps) {
     ]
 
     return (
-        <form className={formClasses} onSubmit={(e) => e.preventDefault()}>
+        <form className={formClasses} action="/" method="POST">
             <section className={titleSectionClasses}>
                 <h1 className={hClasses}>Log Into <span className={innerSpanClasses}>Account</span></h1>
                 <p className={pClasses}>Type the required data to enter the chat</p>

@@ -16,27 +16,6 @@ export const ActiveContext = React.createContext<ActiveContext>({
 
 export default function App() {
 
-  const makeAPICall = async () => {
-    const something = "something!"
-    try {
-      const response = await fetch("http://localhost:8080/greeting", {
-        method: "GET"
-      });
-      if (response.ok) {
-        console.log("Response " + await response.text())
-      } else {
-        throw new Error(`HTTP Error! Status: ${response.status}`);
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  useEffect(() => {
-    makeAPICall()
-  }, [])
-
-
   // States.
   const [isActive, setIsActive] = React.useState(false);
   const [isDark, setIsDark] = React.useState(false);

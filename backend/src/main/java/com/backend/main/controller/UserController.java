@@ -19,12 +19,12 @@ public class UserController {
         return userRepository.findAll();
     }
 
-    @GetMapping("/{email}")
+    @GetMapping("/email/{email}")
     public User getUserByEmail(@PathVariable String email) {
         return userRepository.findByEmail(email);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public User getUserById(@PathVariable Long id) {
         return userRepository.findById(id).orElse(null);
     }
@@ -37,6 +37,11 @@ public class UserController {
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable Long id) {
         userRepository.deleteById(id);
+    }
+
+    @DeleteMapping
+    public void deleteAllUsers() {
+        userRepository.deleteAll();
     }
 
 }

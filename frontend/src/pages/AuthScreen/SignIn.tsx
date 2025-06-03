@@ -1,10 +1,28 @@
-import React from "react"
+import React from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 type SignUpProps = {
     setIsSignUp: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function SignIn({ setIsSignUp }: SignUpProps) {
+
+    const navigate = useNavigate();
+
+    // Functions
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+        e.preventDefault();
+
+        const formData = new FormData(e.currentTarget);
+        const data = Object.fromEntries(formData); // Taking all the entries from the form.
+
+        axios.get(`http://localhost:8080/api/v1/users/email/${data.email}`)
+            .then((res) => {
+                console.log(res);
+                navigate("/");
+            })
+    }
 
     // Classes Variables.
     const formClasses = `py-18.75 px-22 bg-white color-black font-secondary
@@ -33,7 +51,7 @@ export default function SignIn({ setIsSignUp }: SignUpProps) {
     ]
 
     return (
-        <form className={formClasses} action="/" method="POST">
+        <form className={formClasses} onSubmit={handleSubmit}>
             <section className={titleSectionClasses}>
                 <h1 className={hClasses}>Log Into <span className={innerSpanClasses}>Account</span></h1>
                 <p className={pClasses}>Type the required data to enter the chat</p>

@@ -1,5 +1,4 @@
 import React from "react"
-import { useFormStatus } from "react-dom";
 import axios from "axios";
 
 type SignUpProps = {
@@ -44,7 +43,7 @@ export default function SignUp({ setIsSignUp }: SignUpProps) {
     ]
 
     return (
-        <form className={formClasses} onSubmit={handleSubmit}>
+        <form className={formClasses} onSubmit={() => handleSubmit}>
             <section className={titleSectionClasses}>
                 <h1 className={hClasses}>Create <span className={innerSpanClasses}>Account</span></h1>
                 <p className={pClasses}>Create account to enter the chat</p>

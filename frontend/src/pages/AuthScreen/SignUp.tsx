@@ -1,10 +1,20 @@
 import React from "react"
+import { useFormStatus } from "react-dom";
+import axios from "axios";
 
 type SignUpProps = {
     setIsSignUp: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function SignUp({ setIsSignUp }: SignUpProps) {
+
+    // Functions
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+        const formData = new FormData(e.currentTarget);
+        const data = Object.fromEntries(formData); // Taking all the entries from the form.
+        
+        axios.post("http://localhost:8080/api/v1/users", data);
+    }
 
     // Classes Variables.
     const formClasses = `py-18.75 px-22 bg-white color-black font-secondary
@@ -28,13 +38,13 @@ export default function SignUp({ setIsSignUp }: SignUpProps) {
         active:duration-0`;
 
     const inputs = [
-        {type: "text", placeholder:"Your Username"},
-        {type: "email", placeholder:"Your Email"},
-        {type: "password", placeholder:"Your Password"}
+        {type: "text", placeholder:"Your Username", name: "username"},
+        {type: "email", placeholder:"Your Email", name: "email"},
+        {type: "password", placeholder:"Your Password", name: "password"}
     ]
 
     return (
-        <form className={formClasses} onSubmit={(e) => e.preventDefault()}>
+        <form className={formClasses} onSubmit={handleSubmit}>
             <section className={titleSectionClasses}>
                 <h1 className={hClasses}>Create <span className={innerSpanClasses}>Account</span></h1>
                 <p className={pClasses}>Create account to enter the chat</p>
@@ -42,9 +52,9 @@ export default function SignUp({ setIsSignUp }: SignUpProps) {
             </section>
 
             <section className={inputsSectionClasses}>
-                {inputs.map(({ type, placeholder }) => {
+                {inputs.map(({ type, placeholder, name }) => {
                     return (
-                        <input type={type} placeholder={placeholder} className={inputClasses}></input>
+                        <input type={type} placeholder={placeholder} className={inputClasses} name={name}></input>
                     )
                 })}
             </section>

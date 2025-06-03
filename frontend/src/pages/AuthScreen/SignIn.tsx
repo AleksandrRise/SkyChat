@@ -19,8 +19,11 @@ export default function SignIn({ setIsSignUp }: SignUpProps) {
 
         axios.get(`http://localhost:8080/api/v1/users/email/${data.email}`)
             .then((res) => {
-                console.log(res);
-                navigate("/");
+                console.log(res.data.password);
+                console.log(data.password)
+                if (res.data.password === data.password) {
+                    navigate("/")
+                }
             })
     }
 
@@ -46,8 +49,8 @@ export default function SignIn({ setIsSignUp }: SignUpProps) {
         active:duration-0`;
 
     const inputs = [
-        {type: "email", placeholder:"Your Email"},
-        {type: "password", placeholder:"Your Password"}
+        {type: "email", placeholder:"Your Email", name: "email"},
+        {type: "password", placeholder:"Your Password", name: "password"}
     ]
 
     return (
@@ -59,9 +62,9 @@ export default function SignIn({ setIsSignUp }: SignUpProps) {
             </section>
 
             <section className={inputsSectionClasses}>
-                {inputs.map(({ type, placeholder }) => {
+                {inputs.map(({ type, placeholder, name }) => {
                     return (
-                        <input type={type} placeholder={placeholder} className={inputClasses}></input>
+                        <input type={type} placeholder={placeholder} name={name} className={inputClasses}></input>
                     )
                 })}
             </section>

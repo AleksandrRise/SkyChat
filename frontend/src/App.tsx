@@ -3,6 +3,7 @@ import Aside from "./pages/HomeScreen/Aside"
 import Chat from "./pages/HomeScreen/Chat"
 import users from "./utils/users"
 import React, { useEffect } from "react"
+import { useNavigate } from "react-router-dom";
 
 // Context for isActive state.
 type ActiveContext = {
@@ -30,6 +31,15 @@ export default function App() {
       setIsDark(false);
     }
   }, []);
+
+  const navigate = useNavigate();
+
+  // Doesn't allow user enter the main page unless he is logged in.
+  useEffect(() => {
+    if (localStorage.getItem("isLogged") !== "true") {
+      navigate("/auth");
+    }
+  })
 
   // Classes variables.
   const wrapperClasses = `flex w-full h-screen overflow-hidden text-textColor

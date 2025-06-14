@@ -19,10 +19,9 @@ export default function SignIn({ setIsSignUp }: SignUpProps) {
 
         axios.get(`http://localhost:8080/api/v1/users/email/${data.email}`)
             .then((res) => {
-                console.log(res.data.password);
-                console.log(data.password)
                 if (res.data.password === data.password) {
                     navigate("/")
+                    localStorage.setItem("isLogged", "true");
                 }
             })
     }

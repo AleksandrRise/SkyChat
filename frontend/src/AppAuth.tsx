@@ -1,12 +1,22 @@
 import SignUp from "./pages/AuthScreen/SignUp";
 import SignIn from "./pages/AuthScreen/SignIn";
 import Logo from "./pages/AuthScreen/Logo.tsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function AppAuth() {
 
     // States.
     const [isSignUp, setIsSignUp] = useState(false);
+
+    const navigate = useNavigate();
+
+    // Doesn't allow user enter the auth page if he is logged in.
+    useEffect(() => {
+    if (localStorage.getItem("isLogged") === "true") {
+        navigate("/");
+    }
+    })
 
     // Classes variables.
     const mainClasses = `relative h-screen w-full flex justify-center items-center

@@ -13,9 +13,9 @@ export default function AppAuth() {
 
     // Doesn't allow user enter the auth page if he is logged in.
     useEffect(() => {
-    if (localStorage.getItem("isLogged") === "true") {
-        navigate("/");
-    }
+        if (localStorage.getItem("isLogged") === "true") {
+            navigate("/");
+        }
     })
 
     // Classes variables.
@@ -28,6 +28,7 @@ export default function AppAuth() {
             {isSignUp 
                 ? <SignUp setIsSignUp={setIsSignUp} /> 
                 : <SignIn setIsSignUp={setIsSignUp} />}
+            
         </main>
     )
 }

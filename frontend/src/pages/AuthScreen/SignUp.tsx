@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import axios from "axios";
 
 type SignUpProps = {
@@ -7,12 +7,21 @@ type SignUpProps = {
 
 export default function SignUp({ setIsSignUp }: SignUpProps) {
 
+    // States
+    const [ resStatus, setResStatus ] = useState<number>();
+
     // Functions
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         const formData = new FormData(e.currentTarget);
         const data = Object.fromEntries(formData); // Taking all the entries from the form.
         
-        axios.post("http://localhost:8080/api/v1/users", data);
+        try {
+            const response = await axios.post("http://localhost:8080/api/v1/users", data);
+            setResStatus(200);
+        } catch (error) {
+            setResStatus(500);
+        }
+        
     }
 
     // Classes Variables.
@@ -35,6 +44,8 @@ export default function SignUp({ setIsSignUp }: SignUpProps) {
         font-semibold tracking-wider absolute bottom-0 right-0 shadow-donebtn
         hover:scale-105 duration-500 hover:duration-200 active:opacity-80
         active:duration-0`;
+    const errorClasses = `text-error`;
+    const successClasses = `text-success`;
 
     const inputs = [
         {type: "text", placeholder:"Your Username", name: "username"},
@@ -43,12 +54,17 @@ export default function SignUp({ setIsSignUp }: SignUpProps) {
     ]
 
     return (
-        <form className={formClasses} onSubmit={handleSubmit}>
+        <form action="javascript:void(0)" className={formClasses} onSubmit={handleSubmit}>
             <section className={titleSectionClasses}>
                 <h1 className={hClasses}>Create <span className={innerSpanClasses}>Account</span></h1>
                 <p className={pClasses}>Create account to enter the chat</p>
                 <div className={borderClasses}></div>
             </section>
+
+            {resStatus === 500 
+                ? <span className={errorClasses}>This user already exists.</span> 
+                : resStatus === 200 && <span className={successClasses}>Success! Now login.</span>
+            }
 
             <section className={inputsSectionClasses}>
                 {inputs.map(({ type, placeholder, name }) => {

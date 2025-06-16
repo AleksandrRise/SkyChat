@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -9,6 +9,9 @@ type SignUpProps = {
 export default function SignIn({ setIsSignUp }: SignUpProps) {
 
     const navigate = useNavigate();
+
+    // States
+    const [ errorVisible, setErrorVisible ] = useState<boolean>();
 
     // Functions
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -22,6 +25,8 @@ export default function SignIn({ setIsSignUp }: SignUpProps) {
                 if (res.data.password === data.password) {
                     navigate("/")
                     localStorage.setItem("isLogged", "true");
+                } else {
+                    setErrorVisible(true);
                 }
             })
     }
@@ -46,6 +51,7 @@ export default function SignIn({ setIsSignUp }: SignUpProps) {
         font-semibold tracking-wider absolute bottom-0 right-0 shadow-donebtn
         hover:scale-105 duration-500 hover:duration-200 active:opacity-80
         active:duration-0`;
+    const errorClasses = `text-error`;
 
     const inputs = [
         {type: "email", placeholder:"Your Email", name: "email"},
@@ -59,6 +65,8 @@ export default function SignIn({ setIsSignUp }: SignUpProps) {
                 <p className={pClasses}>Type the required data to enter the chat</p>
                 <div className={borderClasses}></div>
             </section>
+
+            {errorVisible && <span className={errorClasses}>Wrong email/password.</span>}
 
             <section className={inputsSectionClasses}>
                 {inputs.map(({ type, placeholder, name }) => {

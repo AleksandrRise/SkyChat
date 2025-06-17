@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import defaultPhoto from "../../assets/images/Person.png";
 import sendBtn from "../../assets/images/chat/sendBtn.png";
 import users from "../../utils/users";
+import { over, Client } from "stompjs";
+import type { Message } from "stompjs";
+import SockJS from "sockjs-client";
 
 type ChatProps = {
     chatClickedId: number;
@@ -12,7 +15,66 @@ type messagesType = {
     isMe: boolean
 }
 
+var stompClient: Client;
 export default function Chat({ chatClickedId }: ChatProps) {
+
+    // TEMPORARY
+    type payloadDataType = {
+        status: "JOIN" | "MESSAGE";
+        senderName: string;
+        text: string;
+    }
+
+    const [publicChats, setPublicChats] = useState<payloadDataType[]>([]);
+    const [privateChats, setPrivateChats] = useState(new Map());
+    const [userData, setUserData] = useState({
+        username: "",
+        receivername: "",
+        connected: false,
+        message: ""
+    })
+
+    const onConnected = () => {
+        setUserData({...userData, "connected":true});
+        stompClient.subscribe("/chatroom/public", onPublicMessageReceived);
+        stompClient.subscribe(`/user/${userData.username}/private`, onPrivateMessageReceived);
+    }
+
+    const onPublicMessageReceived = (payload: Message) => {
+        let payloadData: payloadDataType = JSON.parse(payload.body);
+        switch(payloadData.status) {
+            case "JOIN":
+                break;
+            case "MESSAGE":
+                publicChats.push(payloadData);
+                setPublicChats([...publicChats])
+                break;
+        }
+    }
+
+    const onPrivateMessageReceived = (payload: Message) => {
+        let payloadData: payloadDataType = JSON.parse(payload.body);
+        if (privateChats.get(payloadData.senderName)) {
+            privateChats.get(payloadData.senderName).push(payloadData);
+            setPrivateChats(new Map(privateChats));
+        } else {
+            let list = [];
+            list.push(payloadData);
+
+            privateChats.set(payloadData.senderName, list);
+            setPrivateChats(new Map(privateChats));
+        }
+    }
+
+    const onError = (err: unknown) => {
+        console.error(err);
+    }
+
+    let Sock = new SockJS("http://localhost:8080/ws")
+    stompClient = over(Sock);
+    stompClient.connect({}, onConnected, onError); 
+    
+
 
     // States.
     const [input, setInput] = useState<string>("");
@@ -108,7 +170,7 @@ export default function Chat({ chatClickedId }: ChatProps) {
                     onChange={e => setInput(e.currentTarget.value)}/>
                 <button type="submit" className={sendClasses}>
                     <figure>
-                        <img src={sendBtn} alt="!Click to Send a Message!" />
+                        <img src={sendBtn} alt="!Send a Message!" />
                     </figure>
                 </button>
             </form>

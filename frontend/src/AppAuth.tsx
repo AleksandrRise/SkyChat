@@ -16,6 +16,8 @@ export default function AppAuth() {
         if (localStorage.getItem("isLogged") === "true") {
             navigate("/");
         }
+
+        
     })
 
     // Classes variables.

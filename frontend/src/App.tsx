@@ -4,8 +4,6 @@ import Chat from "./pages/HomeScreen/Chat"
 import users from "./utils/users"
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
-import SockJS from "sockjs-client";
-import Stomp from "stompjs";
 
 // Context for isActive state.
 type ActiveContext = {
@@ -23,23 +21,6 @@ export default function App() {
   const [isActive, setIsActive] = React.useState(false);
   const [isDark, setIsDark] = React.useState(false);
   const [chatClickedId, setChatClickedId] = React.useState(-1);
-  const [stompClient, setStompClient] = useState<Stomp.Client>();
-
-  useEffect(() => {
-    const socket = new SockJS('chat');
-    const client = Stomp.over(socket);
-    client.connect({}, (frame: Stomp.Frame | undefined) => {
-      client.subscribe('/topic/greetings', (greeting: Stomp.Message) => {
-        console.log("greetings: " + greeting.body);
-      })
-    })
-
-    setStompClient(client);
-
-    return () => {
-      client.disconnect(() => console.log("disconnected successfully"));
-    };
-  }, [])
 
   // Checks what theme is stored in a local storage.
   useEffect(() => {

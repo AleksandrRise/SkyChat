@@ -44,7 +44,10 @@ export default function Chat({ chatClickedId }: ChatProps) {
         let payloadData: payloadDataType = JSON.parse(payload.body);
         switch(payloadData.status) {
             case "JOIN":
-                break;
+                if (!privateChats.get(payloadData.senderName)) {
+                    privateChats.set(payloadData.senderName, []);
+                    setPrivateChats(new Map(privateChats));
+                }
             case "MESSAGE":
                 publicChats.push(payloadData);
                 setPublicChats([...publicChats])
